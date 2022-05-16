@@ -1,0 +1,88 @@
+import { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: 'Bai Jamjuree', sans-serif;
+    color: #cfd8dc;
+  }
+  
+  html {
+    font-size: 100%;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: 700;
+  }
+
+  h1 {
+    font-weight: 500;
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    margin-bottom: 8px;
+  }
+  
+  p {
+    font-size: 1.2rem;
+  }
+`;
+
+export const gridTheme = {
+  gridColumns: 24, // default 12
+  breakpoints: {
+    // defaults below
+    xxl: 1440,
+    xl: 1200,
+    lg: 992,
+    md: 768,
+    sm: 576,
+    xs: 575,
+  },
+  row: {
+    padding: 10, // default 15
+  },
+  col: {
+    padding: 5, // default 15
+  },
+  container: {
+    padding: 0, // default 15
+    maxWidth: {
+      // defaults below
+      xxl: 1141,
+      xl: 1140,
+      lg: 960,
+      md: 720,
+      sm: 540,
+      xs: 540,
+    },
+  },
+};
+
+const theme = {
+  palette: {
+    primary: {
+      main: '#ffc107',
+    },
+    text: {
+      main: '#37474f',
+      light: '#cfd8dc33',
+      superLight: '#cfd8dc',
+    },
+    background: {
+      dark: '#37474f',
+      light: '#cfd8dc',
+      superDark: '#181E22',
+    },
+  },
+  borderRadius: '8px',
+  fonts: ['sans-serif', 'Roboto'],
+  fontSizes: {
+    small: '1em',
+    medium: '1.3em',
+    large: '2em',
+  },
+};
+
+export default theme;

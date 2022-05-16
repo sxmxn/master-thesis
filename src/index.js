@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import 'styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import { ThemeProvider } from 'styled-components';
+import theme, { GlobalStyle, gridTheme } from 'styles/theme';
+import { GridThemeProvider } from 'styled-bootstrap-grid';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <GridThemeProvider gridTheme={gridTheme}>
+        <GlobalStyle />
+        <App />
+      </GridThemeProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
