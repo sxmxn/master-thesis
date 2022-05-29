@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   Drawer as MuiDrawer,
   Box,
@@ -11,7 +11,7 @@ import {
 import { Truck as Logo } from '@styled-icons/boxicons-solid/Truck';
 import { useTheme } from 'styled-components';
 import { useMenuItems } from 'hooks';
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation, matchPath } from 'react-router';
 
 const DRAWER_WIDTH = 300;
 
@@ -19,6 +19,14 @@ const Drawer = () => {
   const { palette } = useTheme();
   const { menuItems } = useMenuItems();
   const navigate = useNavigate();
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  const checkIfActive = url => {
+    if (pathname.includes(url)) return true;
+
+    return !!matchPath(url, pathname);
+  };
 
   return (
     <MuiDrawer
@@ -42,8 +50,18 @@ const Drawer = () => {
       <List>
         {menuItems.map(({ text, url, icon }, index) => {
           const Icon = icon;
+          const isActive = checkIfActive(url);
           return (
-            <ListItem key={text} disablePadding onClick={() => navigate(url)}>
+            <ListItem
+              key={text}
+              disablePadding
+              onClick={() => navigate(url)}
+              sx={{
+                backgroundColor: isActive
+                  ? palette.primary.light
+                  : palette.primary.main,
+              }}
+            >
               <ListItemButton>
                 <ListItemIcon>
                   <Icon size={20} color={palette.text.main} />
