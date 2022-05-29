@@ -8,14 +8,17 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { Truck } from '@styled-icons/bootstrap/Truck';
 import { Truck as Logo } from '@styled-icons/boxicons-solid/Truck';
 import { useTheme } from 'styled-components';
+import { useMenuItems } from 'hooks';
+import { useNavigate } from 'react-router';
 
 const DRAWER_WIDTH = 300;
 
 const Drawer = props => {
   const { palette } = useTheme();
+  const { menuItems } = useMenuItems();
+  const navigate = useNavigate();
 
   return (
     <MuiDrawer
@@ -37,16 +40,19 @@ const Drawer = props => {
         <Logo size={80} />
       </Box>
       <List>
-        {['Main', 'Tour Dashboard', 'Settings'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <Truck size={20} color={palette.text.main} />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {menuItems.map(({ text, url, icon }, index) => {
+          const Icon = icon;
+          return (
+            <ListItem key={text} disablePadding onClick={() => navigate(url)}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <Icon size={20} color={palette.text.main} />
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
       </List>
     </MuiDrawer>
   );

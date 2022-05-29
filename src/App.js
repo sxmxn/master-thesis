@@ -1,20 +1,23 @@
 import styled from 'styled-components';
-import React, { Fragment } from 'react';
-import PageContainer from 'components/PageContainer';
-
-const Box = styled.div`
-  background: ${({ theme }) => theme.palette.background.dark};
-  padding: 2rem;
-  color: ${({ theme }) => theme.palette.text.main};
-`;
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PrivateRoutes from 'components/Auth/PrivateRoutes';
 
 function App() {
   return (
-    <Fragment>
-      <PageContainer>
-        <Box>IQ-TranS</Box>
-      </PageContainer>
-    </Fragment>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<div>login</div>} />
+        <Route path="/" element={<PrivateRoutes />}>
+          <Route path="home" element={<div>home</div>} />
+          <Route path="dashboard">
+            <Route path="" element={<div>dashboard</div>} />
+            <Route path=":tourId" element={<div>tourId</div>} />
+          </Route>
+          <Route path="settings" element={<div>settings</div>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
