@@ -8,6 +8,7 @@ export const PageInnerContainer = styled.div`
   width: 100%;
   max-width: 1500px;
   margin: 0 auto;
+  padding: 24px 18px;
 `;
 
 const PageContainer = ({ children }) => {

@@ -16,7 +16,7 @@
         {
           "uuid": "b0a998ce-28a1-4b59-906f-56b6554c5796",
           "body": "[\n  {\n    \"id\": \"customer1\",\n    \"name\": \"Test GmbH\",\n    \"tours\": [\"tour24\", \"tour27\", \"tour67\", \"tour182\"]\n  },\n  {\n    \"id\": \"customer2\",\n    \"name\": \"Company GmbH\",\n    \"tours\": [\"tour24\", \"tour57\", \"tour68\", \"tour132\"]\n  }\n]",
-          "latency": 0,
+          "latency": 1000,
           "statusCode": 200,
           "label": "",
           "headers": [],
