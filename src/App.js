@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 
 const Box = styled.div`
-  background: ${({ theme }) => theme.palette.background.light};
+  background: ${({ theme }) => theme.palette.background.dark};
   padding: 2rem;
   color: ${({ theme }) => theme.palette.text.main};
 `;

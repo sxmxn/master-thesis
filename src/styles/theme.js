@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    font-family: 'Bai Jamjuree', sans-serif;
+    font-family: 'Inter', sans-serif;
     color: #cfd8dc;
   }
   
@@ -63,18 +63,20 @@ export const gridTheme = {
 const theme = {
   palette: {
     primary: {
-      main: '#ffc107',
+      main: '#1D3557',
+      light: '#457B9D',
+      lighter: '#A8DADC',
     },
     text: {
-      main: '#37474f',
-      light: '#cfd8dc33',
-      superLight: '#cfd8dc',
+      main: '#FFFFFF',
+      secondary: '#333333',
     },
     background: {
-      dark: '#37474f',
-      light: '#cfd8dc',
-      superDark: '#181E22',
+      dark: '#1D3557',
+      main: '#FFFFFF',
+      light: '#F0F0F0',
     },
+    warning: '#E63946',
   },
   borderRadius: '8px',
   fonts: ['sans-serif', 'Roboto'],
