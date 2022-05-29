@@ -1,0 +1,26 @@
+import React from 'react';
+import { Box } from '@mui/material';
+import PropTypes from 'prop-types';
+import Drawer from 'components/Drawer';
+import styled from 'styled-components';
+
+export const PageInnerContainer = styled.div`
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+`;
+
+const PageContainer = ({ children }) => {
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <Drawer />
+      <PageInnerContainer>{children}</PageInnerContainer>
+    </Box>
+  );
+};
+
+Drawer.propTypes = {
+  children: PropTypes.node,
+};
+
+export default PageContainer;

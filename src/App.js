@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { Fragment } from 'react';
+import PageContainer from 'components/PageContainer';
 
 const Box = styled.div`
   background: ${({ theme }) => theme.palette.background.dark};
@@ -8,7 +9,13 @@ const Box = styled.div`
 `;
 
 function App() {
-  return <Box>IQ-TranS</Box>;
+  return (
+    <Fragment>
+      <PageContainer>
+        <Box>IQ-TranS</Box>
+      </PageContainer>
+    </Fragment>
+  );
 }
 
 export default App;
