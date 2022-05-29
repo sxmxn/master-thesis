@@ -7,16 +7,22 @@ import theme, { GlobalStyle, gridTheme } from 'styles/theme';
 import { GridThemeProvider } from 'styled-bootstrap-grid';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+// Create a client
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <GridThemeProvider gridTheme={gridTheme}>
-        <GlobalStyle />
-        <App />
-      </GridThemeProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <GridThemeProvider gridTheme={gridTheme}>
+          <GlobalStyle />
+          <App />
+        </GridThemeProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

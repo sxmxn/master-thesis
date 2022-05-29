@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoutes from 'components/Auth/PrivateRoutes';
+import Dashboard from 'components/container/Dashboard';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         <Route path="/" element={<PrivateRoutes />}>
           <Route path="home" element={<div>home</div>} />
           <Route path="dashboard">
-            <Route path="" element={<div>dashboard</div>} />
+            <Route path="" element={<Dashboard />} />
             <Route path=":tourId" element={<div>tourId</div>} />
           </Route>
           <Route path="settings" element={<div>settings</div>} />
