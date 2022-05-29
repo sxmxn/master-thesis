@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PrivateRoutes from 'components/Auth/PrivateRoutes';

@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router';
 
 const DRAWER_WIDTH = 300;
 
-const Drawer = props => {
+const Drawer = () => {
   const { palette } = useTheme();
   const { menuItems } = useMenuItems();
   const navigate = useNavigate();

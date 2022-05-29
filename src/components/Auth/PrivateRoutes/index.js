@@ -6,7 +6,7 @@ import { Navigate, useLocation, Outlet } from 'react-router-dom';
 const IS_AUTHENTICATED = true;
 
 const PrivateRoutes = () => {
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
 
   if (IS_AUTHENTICATED && pathname === '/') {
     return <Navigate to={'/dashboard'} />;
