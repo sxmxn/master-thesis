@@ -29,6 +29,10 @@ const Container = styled(Box)`
   & .MuiSelect-select {
     color: #fff;
   }
+
+  & .MuiInputLabel-root.Mui-focused {
+    display: none;
+  }
 `;
 
 const Selector = ({ onSelect, items, selected, placeholder, description }) => {
@@ -51,7 +55,9 @@ const Selector = ({ onSelect, items, selected, placeholder, description }) => {
       justifyContent="space-between"
       alignItems="center"
     >
-      <Typography>{description}</Typography>
+      <Typography color="#fff" fontWeight={500} ml={1}>
+        {description}
+      </Typography>
       <FormControl sx={{ minWidth: 130 }}>
         {!selected && <InputLabel id="select-label">{placeholder}</InputLabel>}
         <Select
@@ -63,7 +69,9 @@ const Selector = ({ onSelect, items, selected, placeholder, description }) => {
           label={placeholder}
         >
           {items.map(item => (
-            <MenuItem value={item?.value}>{item?.label}</MenuItem>
+            <MenuItem key={item?.value} value={item?.value}>
+              {item?.label}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>

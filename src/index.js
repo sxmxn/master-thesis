@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import 'styles/index.css';
 
 import { ThemeProvider } from 'styled-components';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import theme, { GlobalStyle, gridTheme } from 'styles/theme';
 import { GridThemeProvider } from 'styled-bootstrap-grid';
 import reportWebVitals from './reportWebVitals';
@@ -17,10 +18,12 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <GridThemeProvider gridTheme={gridTheme}>
-          <GlobalStyle />
-          <App />
-        </GridThemeProvider>
+        <MuiThemeProvider theme={theme}>
+          <GridThemeProvider gridTheme={gridTheme}>
+            <GlobalStyle />
+            <App />
+          </GridThemeProvider>
+        </MuiThemeProvider>
       </ThemeProvider>
     </QueryClientProvider>
   </React.StrictMode>

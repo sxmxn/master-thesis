@@ -1,8 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
+import { createTheme } from '@mui/material/styles';
 
 export const GlobalStyle = createGlobalStyle`
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif !important;
     color: #cfd8dc;
   }
   
@@ -76,10 +77,15 @@ const theme = {
       main: '#FFFFFF',
       light: '#F0F0F0',
     },
-    warning: '#E63946',
+    warning: {
+      main: '#E63946',
+    },
   },
   borderRadius: '8px',
-  fonts: ['sans-serif', 'Roboto'],
+  typography: {
+    fontFamily: 'Inter',
+    fontSize: 14,
+  },
   fontSizes: {
     small: '1em',
     medium: '1.3em',
@@ -87,4 +93,6 @@ const theme = {
   },
 };
 
-export default theme;
+const muiTheme = createTheme(theme);
+
+export default muiTheme;
