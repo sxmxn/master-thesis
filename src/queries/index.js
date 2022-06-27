@@ -47,3 +47,20 @@ export const getTour = async ({ queryKey }) => {
     parameter: tour.parameter,
   };
 };
+
+export const getTourOfCustomer = async ({ queryKey }) => {
+  // eslint-disable-next-line
+  const [_key, { tourId, customerId }] = queryKey;
+  console.log(tourId, customerId);
+  const res = await fetch(
+    `${REST_ENDPOINT}/customers/${customerId}/tours/${tourId}`
+  );
+
+  //format tour data
+  const tour = await res.json();
+  return {
+    id: tour.id,
+    handoverDetails: tour.handover_details,
+    order: tour.order,
+  };
+};

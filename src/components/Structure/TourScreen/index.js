@@ -1,18 +1,28 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { getTour } from 'queries';
+import { getTour, getTourOfCustomer } from 'queries';
 import Loader from 'components/Loader';
 import { useGlobalData } from 'hooks';
 
 const TourScreen = () => {
   const { tourId } = useParams();
-  const { isLoading, data } = useQuery(['tour', { tourId }], getTour);
   const { customer } = useGlobalData();
+  console.log(customer);
+  const { isLoading, data } = useQuery(['tour', { tourId }], getTour);
+  const { isLoading: tourCustomerLoading, data: customerSpecificData } =
+    useQuery(
+      ['tourOfCustomer', { tourId, customerId: customer }],
+      getTourOfCustomer,
+      {
+        // The query will not execute until customer exists
+        enabled: !!customer,
+      }
+    );
 
-  console.log(customer, data);
+  console.log(customerSpecificData);
 
-  if (isLoading) return <Loader />;
+  if (isLoading || tourCustomerLoading) return <Loader />;
 
   return <div></div>;
 };
