@@ -11,6 +11,7 @@ import styled from 'styled-components';
 const Container = styled(Paper)`
   background-color: ${({ theme }) => theme.palette.primary.main} !important;
   padding: ${({ theme }) => theme.spacing(3)};
+  border-radius: 8px !important;
 `;
 
 export default function BasicTable({ tours }) {
