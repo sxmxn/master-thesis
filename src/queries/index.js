@@ -25,3 +25,24 @@ export const getAllTours = async () => {
 
   return await formattedData;
 };
+
+export const getTour = async ({ queryKey }) => {
+  const [_key, { tourId }] = queryKey;
+  const res = await fetch(`${REST_ENDPOINT}/tours/${tourId}`);
+
+  //format tour data
+  const tour = await res.json();
+  return {
+    id: tour.id,
+    name: tour.name,
+    driver: tour.driver,
+    date: tour.date,
+    startTime: tour.start_time,
+    endTime: tour.end_time,
+    stops: tour.stops,
+    status: tour.status,
+    boxes: tour.boxes,
+    route: tour.route,
+    parameter: tour.parameter,
+  };
+};

@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import PrivateRoutes from 'components/Auth/PrivateRoutes';
 import Dashboard from 'components/Structure/Dashboard';
+import TourScreen from 'components/Structure/TourScreen';
 import { QueryParamProvider } from 'use-query-params';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
             <Route path="home" element={<div>home</div>} />
             <Route path="dashboard">
               <Route path="" element={<Dashboard />} />
-              <Route path=":tourId" element={<div>tourId</div>} />
+              <Route path=":tourId" element={<TourScreen />} />
             </Route>
             <Route path="settings" element={<div>settings</div>} />
           </Route>
