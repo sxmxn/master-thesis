@@ -29,7 +29,7 @@ const IllustrationCard = ({ description, icon, width = 500, height = 180 }) => {
 
 IllustrationCard.propTypes = {
   description: PropTypes.string.isRequired,
-  icon: PropTypes.node.isRequired,
+  icon: PropTypes.any.isRequired,
   width: PropTypes.number,
   height: PropTypes.number,
 };

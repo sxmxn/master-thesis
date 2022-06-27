@@ -20,7 +20,7 @@ const PageContainer = ({ children }) => {
   );
 };
 
-Drawer.propTypes = {
+PageContainer.propTypes = {
   children: PropTypes.node,
 };
 

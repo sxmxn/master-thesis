@@ -3,9 +3,7 @@ import { useQuery } from 'react-query';
 import { getAllCustomers, getAllTours } from 'queries';
 import Loader from 'components/Loader';
 import Selector from 'components/Form/Selector';
-import IllustrationCard from 'components/Structure/IllustrationCard';
-import { Box } from '@mui/material';
-import { PinMap } from '@styled-icons/bootstrap/PinMap';
+import TourTable from 'components/TourTable';
 
 const Dashboard = () => {
   const { isLoading, data } = useQuery('customers', getAllCustomers);
@@ -36,12 +34,7 @@ const Dashboard = () => {
         placeholder="Customer"
         description="Select Customer"
       />
-      <Box mt={2}>
-        <IllustrationCard
-          description="Select a customer to view their tours"
-          icon={PinMap}
-        />
-      </Box>
+      <TourTable tours={tours} />
     </div>
   );
 };
