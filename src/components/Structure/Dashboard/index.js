@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { getAllCustomers, getAllTours } from 'queries';
 import Loader from 'components/Loader';
 import Selector from 'components/Form/Selector';
 import TourTable from 'components/TourTable';
+import { useGlobalData } from 'hooks';
 
 const Dashboard = () => {
   const { isLoading, data } = useQuery('customers', getAllCustomers);
@@ -12,7 +13,9 @@ const Dashboard = () => {
     getAllTours
   );
   //todo live tours
-  const [selectedCustomer, setSelectedCustomer] = useState('');
+
+  // selected customer is stored in global store because we need it in various places
+  const { customer, setCustomer } = useGlobalData();
 
   const selectorItems = useMemo(() => {
     if (data) {
@@ -29,8 +32,8 @@ const Dashboard = () => {
     <div>
       <Selector
         items={selectorItems}
-        onSelect={setSelectedCustomer}
-        selected={selectedCustomer}
+        onSelect={setCustomer}
+        selected={customer}
         placeholder="Customer"
         description="Select Customer"
       />

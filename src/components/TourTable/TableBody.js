@@ -24,7 +24,7 @@ export const StyledTable = styled(TableBodyMui)(({ theme }) => ({
 export default function TableBody({ rows }) {
   const navigate = useNavigate();
   const navigateToTourOverview = tourId => {
-    navigate(`${tourId}`);
+    navigate(`../${tourId}`);
   };
 
   return (

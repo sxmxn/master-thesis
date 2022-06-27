@@ -1,3 +1,3 @@
 export const appQueryParams = {
-  tour: 'tour',
+  customer: 'customer',
 };
