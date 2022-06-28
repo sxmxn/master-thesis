@@ -25,6 +25,8 @@ The configuration file is located in the root directory of this repository.
 rest_api_mock.json
 ```
 
+Make sure the env variable `REACT_APP_API_ENDPOINT` is the same as the port of the mocked REST API. 
+
 ## Styling
 
 For styling the [styled components library](https://styled-components.com/) is being used.
