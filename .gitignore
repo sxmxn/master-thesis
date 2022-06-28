@@ -25,3 +25,5 @@ yarn-error.log*
 .idea
 
 iq-trans-dashboard.iml
+
+.env

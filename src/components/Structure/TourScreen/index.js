@@ -8,7 +8,6 @@ import { useGlobalData } from 'hooks';
 const TourScreen = () => {
   const { tourId } = useParams();
   const { customer } = useGlobalData();
-  console.log(customer);
   const { isLoading, data } = useQuery(['tour', { tourId }], getTour);
   const { isLoading: tourCustomerLoading, data: customerSpecificData } =
     useQuery(
