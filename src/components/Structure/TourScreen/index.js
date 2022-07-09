@@ -6,6 +6,7 @@ import Loader from 'components/Loader';
 import { useGlobalData } from 'hooks';
 import Card from 'components/Structure/Card';
 import BoxPlotLight from 'components/Structure/BoxPlotLight';
+import { Box } from '@mui/material';
 
 const TourScreen = () => {
   const { tourId } = useParams();
@@ -25,20 +26,32 @@ const TourScreen = () => {
       }
     );
 
-  console.log(tourParameterLoading, tourId);
+  console.log(tourParameter);
 
   if (tourParameterLoading || tourCustomerLoading || isLoading)
     return <Loader />;
 
   return (
     <div>
-      <Card width={380}>
-        <BoxPlotLight
-          boxes={tourParameter.boxesTemperature}
-          title=" Temperature"
-          chartId={`pox-plot-temperature-tour-${tourId}`}
-        />
-      </Card>
+      <Box display="flex">
+        <Card width={380}>
+          <BoxPlotLight
+            boxes={tourParameter.boxesTemperature}
+            title="Average Temperature"
+            chartId={`pox-plot-temperature-tour-${tourId}`}
+          />
+        </Card>
+        <Box ml={2}>
+          <Card width={380}>
+            <BoxPlotLight
+              boxes={tourParameter.boxesVibration}
+              title="Average Vibration"
+              chartId={`pox-plot-vibration-tour-${tourId}`}
+              type="VIBRATION"
+            />
+          </Card>
+        </Box>
+      </Box>
     </div>
   );
 };

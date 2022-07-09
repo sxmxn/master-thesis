@@ -13,10 +13,18 @@ export const Container = styled.div`
     path {
       stroke-width: 4;
     }
+    
+    ${({ type }) =>
+      type === 'VIBRATION' &&
+      `
+       path:nth-child(odd) {
+      stroke-width: 0;
+     } 
+    `}
   },
 `;
 
-const BoxPlotLight = ({ title, boxes, chartId }) => {
+const BoxPlotLight = ({ title, boxes, chartId, type }) => {
   const [boxPlotLightState, setBoxPlotLightState] = useState({
     series: [
       {
@@ -62,6 +70,13 @@ const BoxPlotLight = ({ title, boxes, chartId }) => {
     if (boxes.length) {
       //build data serie
       const data = boxes.map(box => {
+        if (type === 'VIBRATION') {
+          return {
+            x: box.boxId,
+            y: [box.min, box.average, box.average, box.average, box.max],
+          };
+        }
+
         return {
           x: box.boxId,
           y: [box.min, box.average, box.average, box.average, box.max],
@@ -86,7 +101,7 @@ const BoxPlotLight = ({ title, boxes, chartId }) => {
   }, [title, boxes]);
 
   return (
-    <Container id="chart">
+    <Container id="chart" type={type}>
       <ReactApexChart
         options={boxPlotLightState.options}
         series={boxPlotLightState.series}
@@ -101,6 +116,7 @@ BoxPlotLight.propTypes = {
   title: PropTypes.string.isRequired,
   boxes: PropTypes.array.isRequired,
   chartId: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['VIBRATION', 'TEMPERATURE']),
 };
 
 export default BoxPlotLight;
