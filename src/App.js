@@ -10,13 +10,13 @@ import PrivateRoutes from 'components/Auth/PrivateRoutes';
 import Dashboard from 'components/Structure/Dashboard';
 import TourScreen from 'components/Structure/TourScreen';
 import { QueryParamProvider } from 'use-query-params';
-import { GlobalDataProvider } from 'components/Contexts';
+import { CustomerDataProvider } from 'components/Contexts';
 
 function App() {
   return (
     <BrowserRouter>
       <QueryParamProvider ReactRouterRoute={RouteAdapter}>
-        <GlobalDataProvider>
+        <CustomerDataProvider>
           <Routes>
             <Route path="/login" element={<div>login</div>} />
             <Route path="/" element={<PrivateRoutes />}>
@@ -28,7 +28,7 @@ function App() {
               <Route path="settings" element={<div>settings</div>} />
             </Route>
           </Routes>
-        </GlobalDataProvider>
+        </CustomerDataProvider>
       </QueryParamProvider>
     </BrowserRouter>
   );

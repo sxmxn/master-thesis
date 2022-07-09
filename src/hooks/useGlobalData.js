@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 
-import { GlobalDataContext } from 'components/Contexts';
+import { CustomerDataContext } from 'components/Contexts';
 
 const useGlobalData = () => {
-  return useContext(GlobalDataContext);
+  return useContext(CustomerDataContext);
 };
 
 export default useGlobalData;

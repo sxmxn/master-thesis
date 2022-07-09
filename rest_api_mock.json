@@ -8,31 +8,6 @@
   "hostname": "127.0.0.1",
   "routes": [
     {
-      "uuid": "8e6f0e89-0a2e-4d49-b633-886793948923",
-      "documentation": "Get all customers",
-      "method": "get",
-      "endpoint": "customers",
-      "responses": [
-        {
-          "uuid": "b0a998ce-28a1-4b59-906f-56b6554c5796",
-          "body": "[\n  {\n    \"id\": \"customer1\",\n    \"name\": \"Test GmbH\",\n    \"tours\": [\"tour24\", \"tour27\", \"tour67\", \"tour182\"]\n  },\n  {\n    \"id\": \"customer2\",\n    \"name\": \"Company GmbH\",\n    \"tours\": [\"tour24\", \"tour57\", \"tour68\", \"tour132\"]\n  }\n]",
-          "latency": 1000,
-          "statusCode": 200,
-          "label": "",
-          "headers": [],
-          "filePath": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false
-        }
-      ],
-      "enabled": true,
-      "randomResponse": false,
-      "sequentialResponse": false
-    },
-    {
       "uuid": "2d51a323-1b28-494d-aece-072416014951",
       "documentation": "Get all customers",
       "method": "get",
@@ -83,15 +58,40 @@
       "sequentialResponse": false
     },
     {
-      "uuid": "6059ae34-ba34-4109-aef1-6527c3df88e4",
-      "documentation": "Get customer specific data of tour",
+      "uuid": "ed4b0090-dd60-42cf-94f2-cd5ff62cb259",
+      "documentation": "Get all customers",
       "method": "get",
-      "endpoint": "customers/:customerId/tours/:tourId",
+      "endpoint": "tours/live",
       "responses": [
         {
-          "uuid": "e8cb31ea-c880-41aa-adaf-0b7939a03de6",
-          "body": "{{# switch (urlParam 'customerId')}}\n  {{# case \"customer1\" }}\n    {\n      \"id\": \"customerSpecificTour24\",\n      \"handover_details\": {\n        \"location\": {\n          \"address\": \"Rundling 23, 23847 Pölitz\",\n          \"coordinates\": {\n            \"lng\": \"53.77560439465293\", \n            \"lat\": \"10.385247147813534\"}\n        },\n        \"date\": \"{{dateTimeShift date='2021-01-01 10:23' format='yyyy-MM-dd HH:mm' years=1 months=1 }}\",\n        \"temperatur\": 17,\n        \"receiver\": \"Roza Kristiane\"\n      },\n      \"order\": {\n        \"portions\": 75,\n        \"boxes\": 7\n      }\n    }\n  {{/ case }}\n  {{# default }}\n    {}\n  {{/ default }}\n{{/ switch}}",
-          "latency": 0,
+          "uuid": "f8579e5d-61cc-4564-881c-abe7c71a3ad8",
+          "body": "[\n  {\n    \"id\": \"tour24\",\n    \"name\": \"Tour 24\",\n    \"driver\": \"Cathrin Jones\",\n    \"date\": \"{{dateTimeShift date='2021-01-01' format='yyyy-MM-dd' years=1 months=1}}\",\n    \"start_time\": \"{{time '09:25' '09:25' 'HH:mm'}}\",\n    \"end_time\": \"{{time '15:12' '15:12' 'HH:mm'}}\",\n    \"stops\": 6,\n    \"status\": \"completed\",\n    \"temperatur_status\": \"GOOD\",\n    \"vibration_status\": \"GOOD\"\n  },\n  {\n    \"id\": \"tour27\",\n    \"name\": \"Tour 27\",\n    \"driver\": \"Steve Stevenson\",\n    \"date\": \"{{dateTimeShift date='2021-11-21' format='yyyy-MM-dd' years=1 months=1}}\",\n    \"start_time\": \"{{time '08:15' '08:15' 'HH:mm'}}\",\n    \"end_time\": \"{{time '16:12' '16:12' 'HH:mm'}}\",\n    \"stops\": 6,\n    \"status\": \"completed\",\n    \"temperatur_status\": \"BAD\",\n    \"vibration_status\": \"GOOD\"\n  },\n  {\n    \"id\": \"tour182\",\n    \"name\": \"Tour 182\",\n    \"driver\": \"Steve Stevenson\",\n    \"date\": \"{{dateTimeShift date='2021-11-21' format='yyyy-MM-dd' years=1 months=1}}\",\n    \"start_time\": \"{{time '08:15' '08:15' 'HH:mm'}}\",\n    \"end_time\": \"{{time '16:12' '16:12' 'HH:mm'}}\",\n    \"stops\": 6,\n    \"status\": \"live\",\n    \"temperatur_status\": \"GOOD\",\n    \"vibration_status\": \"BAD\"\n  }\n]",
+          "latency": 1000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "8e6f0e89-0a2e-4d49-b633-886793948923",
+      "documentation": "Get all customers",
+      "method": "get",
+      "endpoint": "customers",
+      "responses": [
+        {
+          "uuid": "b0a998ce-28a1-4b59-906f-56b6554c5796",
+          "body": "[\n  {\n    \"id\": \"customer1\",\n    \"name\": \"Test GmbH\",\n    \"tours\": [\"tour24\", \"tour27\", \"tour67\", \"tour182\"]\n  },\n  {\n    \"id\": \"customer2\",\n    \"name\": \"Company GmbH\",\n    \"tours\": [\"tour24\", \"tour57\", \"tour68\", \"tour132\"]\n  }\n]",
+          "latency": 1000,
           "statusCode": 200,
           "label": "",
           "headers": [],
@@ -133,14 +133,14 @@
       "sequentialResponse": false
     },
     {
-      "uuid": "e6ab0adb-e08a-4d49-a469-bfa69c31d95c",
-      "documentation": "Get all tours of one customer",
+      "uuid": "6059ae34-ba34-4109-aef1-6527c3df88e4",
+      "documentation": "Get customer specific data of tour",
       "method": "get",
-      "endpoint": "customers/:customerId/tours",
+      "endpoint": "customers/:customerId/tours/:tourId",
       "responses": [
         {
-          "uuid": "1bf91678-0816-4079-bdca-5189979f9860",
-          "body": "{{# switch (urlParam 'customerId')}}\n  {{# case \"customer1\" }}\n  [\n    {\n       \"id\": \"tour24\",\n      \"name\": \"Tour 24\",\n      \"driver\": \"Cathrin Jones\",\n      \"date\": {{dateTimeShift date='2021-01-01' format='yyyy-MM-dd' years=1 months=1}},\n      \"start_time\": {{time '09:25' '09:25' 'HH:mm'}},\n      \"end_time\": {{time '15:12' '15:12' 'HH:mm'}},\n      \"stops\": 6,\n      \"status\": 'completed',\n    },\n    {\n       \"id\": \"tour27\",\n      \"name\": \"Tour 27\",\n      \"driver\": \"Steve Stevenson\",\n      \"date\": {{dateTimeShift date='2021-11-21' format='yyyy-MM-dd' years=1 months=1}},\n      \"start_time\": {{time '08:15' '08:15' 'HH:mm'}},\n      \"end_time\": {{time '16:12' '16:12' 'HH:mm'}},\n      \"stops\": 6,\n      \"status\": 'completed',\n    },\n  ]\n    \n  {{/ case }}\n  {{# default }}\n    {}\n  {{/ default }}\n{{/ switch}}",
+          "uuid": "e8cb31ea-c880-41aa-adaf-0b7939a03de6",
+          "body": "{{# switch (urlParam 'customerId')}}\n  {{# case \"customer1\" }}\n    {\n      \"id\": \"customerSpecificTour24\",\n      \"handover_details\": {\n        \"location\": {\n          \"address\": \"Rundling 23, 23847 Pölitz\",\n          \"coordinates\": {\n            \"lng\": \"53.77560439465293\", \n            \"lat\": \"10.385247147813534\"}\n        },\n        \"date\": \"{{dateTimeShift date='2021-01-01 10:23' format='yyyy-MM-dd HH:mm' years=1 months=1 }}\",\n        \"temperatur\": 17,\n        \"receiver\": \"Roza Kristiane\"\n      },\n      \"order\": {\n        \"portions\": 75,\n        \"boxes\": 7\n      }\n    }\n  {{/ case }}\n  {{# default }}\n    {}\n  {{/ default }}\n{{/ switch}}",
           "latency": 0,
           "statusCode": 200,
           "label": "",
@@ -159,14 +159,39 @@
     },
     {
       "uuid": "f00e3768-e829-495e-a7b0-ee4ea74875ac",
-      "documentation": "Get box by id",
+      "documentation": "Get parameter of specific box by boxid",
       "method": "get",
-      "endpoint": "boxes/:boxId",
+      "endpoint": "parameter/box/:boxId",
       "responses": [
         {
           "uuid": "05ab1712-a591-477a-9e7c-51bf737eb726",
           "body": "{{# switch (urlParam 'boxId')}}\n  {{# case \"box3_tour24\" }}\n    {\n  \"id\": \"box3_tour24\",\n  \"parameter\": {\n        \"temperatur\": {\n          \"average\": 22,\n          \"min\": 15.2,\n          \"max\": 25.8,\n          \"details\": [\n              {\n                \"time\": {{time '09:25' '09:25' 'HH:mm'}},\n                \"value\": 15.2,\n              },\n              {\n                \"time\": {{time '09:30' '09:30' 'HH:mm'}},\n                \"value\": 15.3,\n              },\n              {\n                \"time\": {{time '09:45' '09:45' 'HH:mm'}},\n                \"value\": 15.9,\n              },\n              {\n                \"time\": {{time '10:00' '10:00' 'HH:mm'}},\n                \"value\": 15.9,\n              },\n              {\n                \"time\": {{time '10:15' '10:15' 'HH:mm'}},\n                \"value\": 15.8,\n              },\n              {\n                \"time\": {{time '10:30' '10:30' 'HH:mm'}},\n                \"value\": 15.7,\n              },\n              {\n                \"time\": {{time '10:45' '10:45' 'HH:mm'}},\n                \"value\": 15.9,\n              },\n              {\n                \"time\": {{time '11:00' '11:00' 'HH:mm'}},\n                \"value\": 16.1,\n              },\n              {\n                \"time\": {{time '11:15' '11:15' 'HH:mm'}},\n                \"value\": 15.8,\n              },\n              {\n                \"time\": {{time '11:30' '11:30' 'HH:mm'}},\n                \"value\": 17.8,\n              },\n              {\n                \"time\": {{time '11:45' '11:45' 'HH:mm'}},\n                \"value\": 19.9,\n              },\n              {\n                \"time\": {{time '12:00' '12:00' 'HH:mm'}},\n                \"value\": 21.1,\n              },\n              {\n                \"time\": {{time '12:15' '12:15' 'HH:mm'}},\n                \"value\": 23.0,\n              },\n              {\n                \"time\": {{time '12:30' '12:30' 'HH:mm'}},\n                \"value\": 24.6,\n              },\n              {\n                \"time\": {{time '12:45' '12:45' 'HH:mm'}},\n                \"value\": 25.6,\n              },{\n                \"time\": {{time '13:00' '13:00' 'HH:mm'}},\n                \"value\": 25.8,\n              },\n              {\n                \"time\": {{time '13:15' '13:15' 'HH:mm'}},\n                \"value\": 25.8,\n              },\n              {\n                \"time\": {{time '13:30' '13:30' 'HH:mm'}},\n                \"value\": 25.7,\n              },\n              {\n                \"time\": {{time '13:45' '13:45' 'HH:mm'}},\n                \"value\": 25.4,\n              },{\n                \"time\": {{time '14:00' '14:00' 'HH:mm'}},\n                \"value\": 25.5,\n              },\n              {\n                \"time\": {{time '14:15' '14:15' 'HH:mm'}},\n                \"value\": 24.8,\n              },\n              {\n                \"time\": {{time '14:30' '14:30' 'HH:mm'}},\n                \"value\": 25.0,\n              },\n              {\n                \"time\": {{time '14:45' '14:45' 'HH:mm'}},\n                \"value\": 24.9,\n              },\n              {\n                \"time\": {{time '15:00' '15:00' 'HH:mm'}},\n                \"value\": 24.7,\n              },\n              {\n                \"time\": {{time '15:12' '15:12' 'HH:mm'}},\n                \"value\": 25.0,\n              },\n            ]\n          \n        },\n        \"vibration\": {},\n      },\n}\n{{/ case }}\n  {{# default }}\n    {}\n  {{/ default }}\n{{/ switch}}",
           "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
+    },
+    {
+      "uuid": "d0ddc2be-ecc7-4ba9-b8fd-0071642f4df3",
+      "documentation": "Get average parameter of specific tour",
+      "method": "get",
+      "endpoint": "parameter/tour/:tourId",
+      "responses": [
+        {
+          "uuid": "56f058ca-941f-4a2e-96e9-739cf2fed5fa",
+          "body": "\n{\n  \"id\": \"parameter_tour24\",\n  \"boxes_temperature\": [\n      {\n        \"average\": 22,\n        \"min\": 15.2,\n        \"max\": 25.8,\n        \"boxId\": \"box3_tour24\"\n      },\n      {\n        \"average\": 18,\n        \"min\": 14.2,\n        \"max\": 20.8,\n        \"boxId\": \"box4_tour24\"\n      }\n    ],\n  \"boxes_vibration\": [\n    {\n      \"average\": 3,\n      \"min\": 0,\n      \"max\": 5.2,\n      \"boxId\": \"box3_tour24\"\n    },\n    {\n      \"average\": 3.2,\n      \"min\": 0,\n      \"max\": 6.1,\n      \"boxId\": \"box4_tour24\"\n    }\n  ]\n}\n",
+          "latency": 500,
           "statusCode": 200,
           "label": "",
           "headers": [],

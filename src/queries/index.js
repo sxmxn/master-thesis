@@ -51,7 +51,6 @@ export const getTour = async ({ queryKey }) => {
 export const getTourOfCustomer = async ({ queryKey }) => {
   // eslint-disable-next-line
   const [_key, { tourId, customerId }] = queryKey;
-  console.log(tourId, customerId);
   const res = await fetch(
     `${REST_ENDPOINT}/customers/${customerId}/tours/${tourId}`
   );
@@ -62,5 +61,17 @@ export const getTourOfCustomer = async ({ queryKey }) => {
     id: tour.id,
     handoverDetails: tour.handover_details,
     order: tour.order,
+  };
+};
+
+export const getParameterOfTour = async ({ queryKey }) => {
+  const [_key, { tourId }] = queryKey;
+  const res = await fetch(`${REST_ENDPOINT}/parameter/tour/${tourId}`);
+
+  const tourParameter = await res.json();
+  return {
+    id: tourParameter.id,
+    boxesTemperature: tourParameter.boxes_temperature,
+    boxesVibration: tourParameter.boxes_vibration,
   };
 };

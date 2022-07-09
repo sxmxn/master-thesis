@@ -1,3 +1,5 @@
-import GlobalDataContext, { GlobalDataProvider } from './GlobalDataContext';
+import CustomerDataContext, {
+  CustomerDataProvider,
+} from './CustomerDataContext';
 
-export { GlobalDataContext, GlobalDataProvider };
+export { CustomerDataContext, CustomerDataProvider };
