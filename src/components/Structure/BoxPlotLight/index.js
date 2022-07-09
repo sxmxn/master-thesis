@@ -97,6 +97,10 @@ const BoxPlotLight = ({ title, boxes, chartId }) => {
   );
 };
 
-BoxPlotLight.propTypes = {};
+BoxPlotLight.propTypes = {
+  title: PropTypes.string.isRequired,
+  boxes: PropTypes.array.isRequired,
+  chartId: PropTypes.string.isRequired,
+};
 
 export default BoxPlotLight;
