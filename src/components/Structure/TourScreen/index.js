@@ -7,6 +7,7 @@ import { useGlobalData } from 'hooks';
 import Card from 'components/Structure/Card';
 import BoxPlotLight from 'components/Structure/BoxPlotLight';
 import { Box } from '@mui/material';
+import StopTable from 'components/StopTable';
 
 const TourScreen = () => {
   const { tourId } = useParams();
@@ -25,8 +26,6 @@ const TourScreen = () => {
         enabled: !!customer,
       }
     );
-
-  console.log(tourParameter);
 
   if (tourParameterLoading || tourCustomerLoading || isLoading)
     return <Loader />;
@@ -52,6 +51,7 @@ const TourScreen = () => {
           </Card>
         </Box>
       </Box>
+      <StopTable stops={data.stops} />
     </div>
   );
 };
