@@ -8,6 +8,7 @@ import Card from 'components/Structure/Card';
 import BoxPlotLight from 'components/Structure/BoxPlotLight';
 import { Box } from '@mui/material';
 import StopTable from 'components/StopTable';
+import Map from 'components/Map';
 
 const TourScreen = () => {
   const { tourId } = useParams();
@@ -52,6 +53,9 @@ const TourScreen = () => {
         </Box>
       </Box>
       <StopTable stops={data.stops} />
+      <Box borderRadius={8} mt={2}>
+        <Map />
+      </Box>
     </div>
   );
 };
