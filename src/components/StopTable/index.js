@@ -5,7 +5,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from './TableHead';
 import Paper from '@mui/material/Paper';
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import styled from 'styled-components';
 
 const Container = styled(Paper)`
@@ -18,6 +18,9 @@ export default function StopTable({ stops }) {
   return (
     <Box mt={2}>
       <Container>
+        <Typography fontWeight={500} mb={2} color="#fff">
+          Stops
+        </Typography>
         <TableContainer>
           <Table sx={{ minWidth: 650 }} aria-label="stop table">
             <TableHead />

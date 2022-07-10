@@ -65,7 +65,7 @@ const TourScreen = () => {
           zIndex={999}
           borderRadius={1}
         >
-          <Typography fontSize={14} fontWeight={500} color="#fff">
+          <Typography fontWeight={500} color="#fff">
             {data?.name}
           </Typography>
         </Box>

@@ -107,7 +107,7 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
         options={boxPlotLightState.options}
         series={boxPlotLightState.series}
         type="boxPlot"
-        height={250}
+        height={230}
       />
     </Container>
   );
