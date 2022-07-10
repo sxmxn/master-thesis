@@ -10,6 +10,7 @@ import { Box, Typography } from '@mui/material';
 import StopTable from 'components/StopTable';
 import Map from 'components/Map';
 import { useTheme } from 'styled-components';
+import VehicleDetails from 'components/Structure/VehicleDetails';
 
 const TourScreen = () => {
   const { palette } = useTheme();
@@ -53,6 +54,13 @@ const TourScreen = () => {
               type="VIBRATION"
             />
           </Card>
+        </Box>
+        <Box ml={2}>
+          <VehicleDetails
+            boxCapacity={data?.vehicleDetails?.box_capacity}
+            loadCapacity={data?.vehicleDetails?.load_capacity}
+            vehicleType={data?.vehicleDetails?.vehicle_type}
+          />
         </Box>
       </Box>
       <StopTable stops={data.stops} />

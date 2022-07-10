@@ -4,7 +4,7 @@ import { createTheme } from '@mui/material/styles';
 export const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Inter', sans-serif !important;
-    color: #cfd8dc;
+    color: #FFFFFF;
   }
   
   html {

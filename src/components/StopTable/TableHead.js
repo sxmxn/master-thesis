@@ -18,7 +18,7 @@ export default function TableHead() {
       <TableRow>
         <TableCell>Company</TableCell>
         <TableCell>Handover Person</TableCell>
-        <TableCell>Planend Arrival Time</TableCell>
+        <TableCell>Planned Arrival Time</TableCell>
         <TableCell>Expected Arrival</TableCell>
         <TableCell>Status</TableCell>
         <TableCell />

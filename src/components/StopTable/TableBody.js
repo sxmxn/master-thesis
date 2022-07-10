@@ -27,7 +27,7 @@ export default function TableBody({ rows }) {
         const {
           company,
           handover_person: handoverPerson,
-          planend_arrival: planendArrival,
+          planned_arrival: plannedArrival,
           expected_arrival: expectedArrival,
           status,
         } = row;
@@ -40,7 +40,7 @@ export default function TableBody({ rows }) {
               {company}
             </TableCell>
             <TableCell>{handoverPerson}</TableCell>
-            <TableCell>{planendArrival}</TableCell>
+            <TableCell>{plannedArrival}</TableCell>
             <TableCell>{expectedArrival}</TableCell>
             <TableCell>{status}</TableCell>
           </TableRow>

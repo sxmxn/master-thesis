@@ -45,6 +45,7 @@ export const getTour = async ({ queryKey }) => {
     boxes: tour.boxes,
     route: tour.route,
     parameter: tour.parameter,
+    vehicleDetails: tour.vehicle_details,
   };
 };
 

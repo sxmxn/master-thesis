@@ -18,7 +18,7 @@ const IllustrationCard = ({
       alignItems={alignItem}
       bgcolor={palette.background.dark}
       py={4}
-      px={6}
+      px={3}
       borderRadius="8px"
       width={width}
     >
