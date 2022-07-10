@@ -6,11 +6,13 @@ import Loader from 'components/Loader';
 import { useGlobalData } from 'hooks';
 import Card from 'components/Structure/Card';
 import BoxPlotLight from 'components/Structure/BoxPlotLight';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import StopTable from 'components/StopTable';
 import Map from 'components/Map';
+import { useTheme } from 'styled-components';
 
 const TourScreen = () => {
+  const { palette } = useTheme();
   const { tourId } = useParams();
   const { customer } = useGlobalData();
   const { isLoading, data } = useQuery(['tour', { tourId }], getTour);
@@ -54,7 +56,19 @@ const TourScreen = () => {
         </Box>
       </Box>
       <StopTable stops={data.stops} />
-      <Box borderRadius={8} mt={2}>
+      <Box borderRadius={2} mt={2} boxShadow={2} position="relative">
+        <Box
+          position="absolute"
+          bgcolor={palette.primary.main}
+          px={5}
+          py={1}
+          zIndex={999}
+          borderRadius={1}
+        >
+          <Typography fontSize={14} fontWeight={500} color="#fff">
+            {data?.name}
+          </Typography>
+        </Box>
         <Map mapData={data.route} />
       </Box>
     </div>

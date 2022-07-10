@@ -3,6 +3,14 @@ import React from 'react';
 import 'leaflet/dist/leaflet.css';
 import PropTypes from 'prop-types';
 import L from 'leaflet';
+import styled from 'styled-components';
+
+const StyledMapContainer = styled(MapContainer)`
+  .leaflet-top {
+    bottom: 10px;
+    top: unset;
+  }
+`;
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -16,7 +24,7 @@ const CENTER_DEFAULT = [52.5317, 13.3817];
 
 const Map = ({ mapHeight = 300, mapData }) => {
   return (
-    <MapContainer
+    <StyledMapContainer
       center={
         mapData
           ? [
@@ -34,7 +42,7 @@ const Map = ({ mapHeight = 300, mapData }) => {
         url="https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
       />
       {!!mapData && <GeoJSON key="test" data={mapData} />}
-    </MapContainer>
+    </StyledMapContainer>
   );
 };
 
