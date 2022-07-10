@@ -65,6 +65,7 @@ export const getTourOfCustomer = async ({ queryKey }) => {
 };
 
 export const getParameterOfTour = async ({ queryKey }) => {
+  // eslint-disable-next-line
   const [_key, { tourId }] = queryKey;
   const res = await fetch(`${REST_ENDPOINT}/parameter/tour/${tourId}`);
 

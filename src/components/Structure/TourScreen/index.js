@@ -18,6 +18,7 @@ const TourScreen = () => {
     ['tourParameter', { tourId }],
     getParameterOfTour
   );
+  // eslint-disable-next-line
   const { isLoading: tourCustomerLoading, data: customerSpecificData } =
     useQuery(
       ['tourOfCustomer', { tourId, customerId: customer }],
@@ -54,7 +55,7 @@ const TourScreen = () => {
       </Box>
       <StopTable stops={data.stops} />
       <Box borderRadius={8} mt={2}>
-        <Map />
+        <Map mapData={data.route} />
       </Box>
     </div>
   );

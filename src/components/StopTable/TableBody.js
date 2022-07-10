@@ -23,17 +23,17 @@ export const StyledTable = styled(TableBodyMui)(({ theme }) => ({
 export default function TableBody({ rows }) {
   return (
     <StyledTable>
-      {rows.map(row => {
+      {rows.map((row, index) => {
         const {
           company,
           handover_person: handoverPerson,
           planend_arrival: planendArrival,
           expected_arrival: expectedArrival,
           status,
-        } = ({} = row);
+        } = row;
         return (
           <TableRow
-            key={row.id}
+            key={index}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
             <TableCell component="th" scope="row">

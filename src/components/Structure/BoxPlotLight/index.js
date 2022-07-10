@@ -98,6 +98,7 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
         ...boxPlotLightState,
       });
     }
+    // eslint-disable-next-line
   }, [title, boxes]);
 
   return (
