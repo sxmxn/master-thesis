@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
 import { getParameterOfTour } from 'queries';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import Loader from 'components/Loader';
 import Card from 'components/Structure/Card';
 import BoxPlotLight from 'components/Structure/BoxPlotLight';
@@ -10,10 +10,15 @@ import { Box } from '@mui/material';
 
 const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
   const { tourId } = useParams();
+  const {
+    state: { boxes },
+  } = useLocation();
   const { isLoading: tourParameterLoading, data: tourParameter } = useQuery(
     ['tourParameter', { tourId }],
     getParameterOfTour
   );
+
+  //ToDo use boxes to fetch parameter data for every box
 
   if (tourParameterLoading) return <Loader />;
 

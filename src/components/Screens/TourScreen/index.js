@@ -40,7 +40,12 @@ const TourScreen = () => {
   return (
     <div>
       <Box display="flex">
-        <Card width={380} onClick={() => navigate('temperature')}>
+        <Card
+          width={380}
+          onClick={() =>
+            navigate('temperature', { state: { boxes: data?.boxes } })
+          }
+        >
           <BoxPlotLight
             boxes={tourParameter.boxesTemperature}
             title="Average Temperature"
