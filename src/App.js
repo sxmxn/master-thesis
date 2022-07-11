@@ -7,8 +7,9 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import PrivateRoutes from 'components/Auth/PrivateRoutes';
-import Dashboard from 'components/Structure/Dashboard';
-import TourScreen from 'components/Structure/TourScreen';
+import HomeScreen from 'components/Screens/HomeScreen';
+import TourScreen from 'components/Screens/TourScreen';
+import ParameterDetailsScreen from 'components/Screens/ParameterDetailsScreen';
 import { QueryParamProvider } from 'use-query-params';
 import { CustomerDataProvider } from 'components/Contexts';
 
@@ -22,8 +23,18 @@ function App() {
             <Route path="/" element={<PrivateRoutes />}>
               <Route path="home" element={<div>home</div>} />
               <Route path="dashboard">
-                <Route path="" element={<Dashboard />} />
-                <Route path=":tourId" element={<TourScreen />} />
+                <Route path="" element={<HomeScreen />} />
+                <Route path=":tourId">
+                  <Route path="" element={<TourScreen />} />
+                  <Route
+                    path="temperature"
+                    element={<ParameterDetailsScreen type="TEMPERATURE" />}
+                  />
+                  <Route
+                    path="vibration"
+                    element={<ParameterDetailsScreen type="VIBRATION" />}
+                  />
+                </Route>
               </Route>
               <Route path="settings" element={<div>settings</div>} />
             </Route>

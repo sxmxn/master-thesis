@@ -11,11 +11,13 @@ import StopTable from 'components/StopTable';
 import Map from 'components/Map';
 import { useTheme } from 'styled-components';
 import VehicleDetails from 'components/Structure/VehicleDetails';
+import { useNavigate } from 'react-router';
 
 const TourScreen = () => {
   const { palette } = useTheme();
   const { tourId } = useParams();
   const { customer } = useGlobalData();
+  const navigate = useNavigate();
   const { isLoading, data } = useQuery(['tour', { tourId }], getTour);
   const { isLoading: tourParameterLoading, data: tourParameter } = useQuery(
     ['tourParameter', { tourId }],
@@ -38,7 +40,7 @@ const TourScreen = () => {
   return (
     <div>
       <Box display="flex">
-        <Card width={380}>
+        <Card width={380} onClick={() => navigate('temperature')}>
           <BoxPlotLight
             boxes={tourParameter.boxesTemperature}
             title="Average Temperature"
@@ -46,7 +48,7 @@ const TourScreen = () => {
           />
         </Card>
         <Box ml={2}>
-          <Card width={380}>
+          <Card width={380} onClick={() => navigate('vibration')}>
             <BoxPlotLight
               boxes={tourParameter.boxesVibration}
               title="Average Vibration"

@@ -9,10 +9,12 @@ const IllustrationCard = ({
   alignItem = 'center',
   display = 'flex',
   width,
+  onClick,
 }) => {
   const { palette } = useTheme();
   return (
     <Box
+      onClick={onClick}
       display={display}
       justifyContent={justifyContent}
       alignItems={alignItem}
@@ -33,6 +35,7 @@ IllustrationCard.propTypes = {
   alignItems: PropTypes.string,
   display: PropTypes.string,
   width: PropTypes.number,
+  onClick: PropTypes.func,
 };
 
 export default IllustrationCard;
