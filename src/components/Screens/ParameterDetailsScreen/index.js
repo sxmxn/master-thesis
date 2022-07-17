@@ -1,26 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
-import { getParameterOfTour } from 'queries';
-import { useParams, useLocation } from 'react-router-dom';
+import { getParameterOfTour, getTour, getParameterOfBoxes } from 'queries';
+import { useParams } from 'react-router-dom';
 import Loader from 'components/Loader';
 import Card from 'components/Structure/Card';
 import BoxPlotLight from 'components/Structure/BoxPlotLight';
 import { Box } from '@mui/material';
+import MultiLineChart from 'components/Structure/MultiLineChart';
 
 const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
   const { tourId } = useParams();
-  const {
-    state: { boxes },
-  } = useLocation();
   const { isLoading: tourParameterLoading, data: tourParameter } = useQuery(
     ['tourParameter', { tourId }],
     getParameterOfTour
   );
+  const { isLoading: tourLoading, data: { boxes = [] } = {} } = useQuery(
+    ['tour', { tourId }],
+    getTour
+  );
+  const { isLoading: boxesLoading, data: boxesData } = useQuery(
+    ['boxes', { boxes }],
+    getParameterOfBoxes,
+    {
+      // The query will not execute until the userId exists
+      enabled: !!boxes.length,
+    }
+  );
 
-  //ToDo use boxes to fetch parameter data for every box
-
-  if (tourParameterLoading) return <Loader />;
+  if (tourParameterLoading || tourLoading || boxesLoading) return <Loader />;
 
   return (
     <Box display="flex">
@@ -40,6 +48,17 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
           />
         )}
       </Card>
+      {type === 'TEMPERATURE' && (
+        <Box ml={2}>
+          <Card width={500}>
+            <MultiLineChart
+              title="Temperature"
+              chartId={`multi-line-chart-tour-${tourId}`}
+              boxes={boxesData}
+            />
+          </Card>
+        </Box>
+      )}
     </Box>
   );
 };

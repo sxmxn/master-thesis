@@ -77,3 +77,13 @@ export const getParameterOfTour = async ({ queryKey }) => {
     boxesVibration: tourParameter.boxes_vibration,
   };
 };
+
+export const getParameterOfBoxes = async ({ queryKey }) => {
+  // eslint-disable-next-line
+  const [_key, { boxes }] = queryKey;
+  return await Promise.all(
+    boxes.map(async boxId =>
+      (await fetch(`${REST_ENDPOINT}/parameter/box/${boxId}`)).json()
+    )
+  );
+};
