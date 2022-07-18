@@ -14,6 +14,11 @@ const MultiLineChart = ({ title, chartId, boxes = [] }) => {
   const [chartState, setChartState] = useState({
     series: [],
     options: {
+      colors: ['#2CD5DC', '#E2FEFF', '#A9C2C3', '#A8DADC'],
+      markers: {
+        size: 4,
+        strokeWidth: 0,
+      },
       annotations: {
         yaxis: [
           {
