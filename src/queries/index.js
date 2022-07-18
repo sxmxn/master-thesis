@@ -75,6 +75,8 @@ export const getParameterOfTour = async ({ queryKey }) => {
     id: tourParameter.id,
     boxesTemperature: tourParameter.boxes_temperature,
     boxesVibration: tourParameter.boxes_vibration,
+    feedbackTemperature: tourParameter.feedback_temperature,
+    feedbackVibration: tourParameter.feedback_vibration,
   };
 };
 

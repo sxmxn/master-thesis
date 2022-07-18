@@ -190,7 +190,7 @@
       "responses": [
         {
           "uuid": "56f058ca-941f-4a2e-96e9-739cf2fed5fa",
-          "body": "\n{\n  \"id\": \"parameter_tour24\",\n  \"boxes_temperature\": [\n      {\n        \"average\": 22,\n        \"min\": 15.2,\n        \"max\": 25.8,\n        \"boxId\": \"box3_tour24\"\n      },\n      {\n        \"average\": 18,\n        \"min\": 14.2,\n        \"max\": 20.8,\n        \"boxId\": \"box4_tour24\"\n      }\n    ],\n  \"boxes_vibration\": [\n    {\n      \"average\": 3,\n      \"min\": 0,\n      \"max\": 5.2,\n      \"boxId\": \"box3_tour24\"\n    },\n    {\n      \"average\": 3.2,\n      \"min\": 0,\n      \"max\": 6.1,\n      \"boxId\": \"box4_tour24\"\n    }\n  ]\n}\n",
+          "body": "\n{\n  \"id\": \"parameter_tour24\",\n  \"boxes_temperature\": [\n      {\n        \"average\": 22,\n        \"min\": 15.2,\n        \"max\": 25.8,\n        \"boxId\": \"box3_tour24\"\n      },\n      {\n        \"average\": 18,\n        \"min\": 14.2,\n        \"max\": 20.8,\n        \"boxId\": \"box4_tour24\"\n      }\n    ],\n  \"boxes_vibration\": [\n    {\n      \"average\": 3,\n      \"min\": 0,\n      \"max\": 5.2,\n      \"boxId\": \"box3_tour24\"\n    },\n    {\n      \"average\": 3.2,\n      \"min\": 0,\n      \"max\": 6.1,\n      \"boxId\": \"box4_tour24\"\n    }\n  ],\n  \"feedback_temperature\": {\n          \"rating\": \"BAD\",\n          \"text\": \"Maximum temperature of 25°C detected for 30 minutes!\"\n  },\n  \"feedback_vibration\": {\n    \"rating\": \"GOOD\",\n    \"text\": \"No major deviation detected!\"\n  }\n}\n",
           "latency": 500,
           "statusCode": 200,
           "label": "",

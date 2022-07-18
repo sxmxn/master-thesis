@@ -8,6 +8,7 @@ import Card from 'components/Structure/Card';
 import BoxPlotLight from 'components/Structure/BoxPlotLight';
 import { Box } from '@mui/material';
 import MultiLineChart from 'components/Structure/MultiLineChart';
+import Feedback from '../../Structure/Feedback';
 
 const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
   const { tourId } = useParams();
@@ -23,7 +24,7 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
     ['boxes', { boxes }],
     getParameterOfBoxes,
     {
-      // The query will not execute until the userId exists
+      // The query will not execute until the boxes exists
       enabled: !!boxes.length,
     }
   );
@@ -31,32 +32,49 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
   if (tourParameterLoading || tourLoading || boxesLoading) return <Loader />;
 
   return (
-    <Box display="flex">
-      <Card width={380}>
-        {type === 'TEMPERATURE' ? (
-          <BoxPlotLight
-            boxes={tourParameter.boxesTemperature}
-            title="Average Temperature"
-            chartId={`pox-plot-temperature-tour-${tourId}`}
-          />
-        ) : (
-          <BoxPlotLight
-            boxes={tourParameter.boxesVibration}
-            title="Average Vibration"
-            chartId={`pox-plot-vibration-tour-${tourId}`}
-            type="VIBRATION"
-          />
-        )}
-      </Card>
-      {type === 'TEMPERATURE' && (
-        <Box ml={2}>
-          <Card width={500}>
-            <MultiLineChart
-              title="Temperature"
-              chartId={`multi-line-chart-tour-${tourId}`}
-              boxes={boxesData}
+    <Box>
+      <Box display="flex">
+        <Card width={380}>
+          {type === 'TEMPERATURE' ? (
+            <BoxPlotLight
+              boxes={tourParameter.boxesTemperature}
+              title="Average Temperature"
+              chartId={`pox-plot-temperature-tour-${tourId}`}
             />
-          </Card>
+          ) : (
+            <BoxPlotLight
+              boxes={tourParameter.boxesVibration}
+              title="Average Vibration"
+              chartId={`pox-plot-vibration-tour-${tourId}`}
+              type="VIBRATION"
+            />
+          )}
+        </Card>
+        {type === 'TEMPERATURE' ? (
+          <Box ml={2}>
+            <Card width={500}>
+              <MultiLineChart
+                title="Temperature"
+                chartId={`multi-line-chart-tour-${tourId}`}
+                boxes={boxesData}
+              />
+            </Card>
+          </Box>
+        ) : (
+          <Box ml={2}>
+            <Feedback
+              rating={tourParameter.feedbackVibration.rating}
+              text={tourParameter.feedbackVibration.text}
+            />
+          </Box>
+        )}
+      </Box>
+      {type === 'TEMPERATURE' && (
+        <Box mt={2} height={250}>
+          <Feedback
+            rating={tourParameter.feedbackTemperature.rating}
+            text={tourParameter.feedbackTemperature.text}
+          />
         </Box>
       )}
     </Box>

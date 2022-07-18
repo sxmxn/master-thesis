@@ -10,6 +10,7 @@ const IllustrationCard = ({
   display = 'flex',
   width,
   onClick,
+  ...rest
 }) => {
   const { palette } = useTheme();
   return (
@@ -23,6 +24,7 @@ const IllustrationCard = ({
       px={3}
       borderRadius="8px"
       width={width}
+      {...rest}
     >
       {children}
     </Box>
