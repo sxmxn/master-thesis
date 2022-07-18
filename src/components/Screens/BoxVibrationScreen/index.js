@@ -7,6 +7,7 @@ import Card from 'components/Structure/Card';
 import BoxPlotLight from 'components/Structure/BoxPlotLight';
 import { Box } from '@mui/material';
 import Feedback from 'components/Structure/Feedback';
+import BarChart from 'components/Structure/BarChart';
 
 const BoxVibrationScreen = () => {
   const { tourId, boxId } = useParams();
@@ -32,7 +33,15 @@ const BoxVibrationScreen = () => {
             type="VIBRATION"
           />
         </Card>
-        <Box ml={2}></Box>
+        <Box ml={2}>
+          <Card width={500}>
+            <BarChart
+              chartId={`bar-chart-vibration-tour-${tourId}-box-${boxId}`}
+              title="Vibration (Displacement index over time)"
+              box={data}
+            />
+          </Card>
+        </Box>
       </Box>
       <Box mt={2} height={250}>
         <Feedback

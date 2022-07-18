@@ -10,38 +10,11 @@ export const Container = styled.div`
   }
 `;
 
-const AreaChart = ({ title, chartId, box }) => {
+const BarChart = ({ title, chartId, box }) => {
   const [chartState, setChartState] = useState({
     series: [],
     options: {
-      fill: {
-        type: 'gradient',
-        gradient: {
-          shadeIntensity: 1,
-          opacityFrom: 0.7,
-          opacityTo: 0.3,
-          stops: [0, 90, 100],
-        },
-      },
-      colors: ['#E2FEFF'],
-      markers: {
-        size: 6,
-        strokeWidth: 0,
-      },
-      annotations: {
-        yaxis: [
-          {
-            y: 50,
-            y2: 25,
-            fillColor: '#E63946',
-          },
-          {
-            y: 10,
-            y2: 0,
-            fillColor: '#457B9D',
-          },
-        ],
-      },
+      colors: ['#A8DADC'],
       dataLabels: {
         enabled: false,
       },
@@ -83,23 +56,26 @@ const AreaChart = ({ title, chartId, box }) => {
       const series = [
         {
           name: box.id,
-          data: box.temperature?.details.map(dataPoint => dataPoint.value),
-          type: 'area',
+          data: box.vibration.details_bar_chart.map(dataPoint => ({
+            y: dataPoint.average,
+            x: dataPoint.time,
+            goals: [
+              {
+                name: 'max',
+                value: dataPoint.max,
+                strokeHeight: 3,
+                strokeColor: '#E63946',
+              },
+            ],
+          })),
         },
       ];
 
-      //build options to set label dynamically
-      const options = {
-        ...chartState.options,
-        labels: box.temperature?.details.map(dataPoint => dataPoint.time),
-      };
-
       // rebuild chart with new serie data and options
-      apexchart.exec(chartId, 'updateOptions', { ...options, series });
+      apexchart.exec(chartId, 'updateOptions', { series });
 
       setChartState({
         series: series,
-        options: options,
         ...chartState,
       });
     }
@@ -111,17 +87,17 @@ const AreaChart = ({ title, chartId, box }) => {
       <ReactApexChart
         options={chartState.options}
         series={chartState.series}
-        type="area"
-        width={550}
+        type="bar"
+        width={450}
       />
     </Container>
   );
 };
 
-AreaChart.propTypes = {
+BarChart.propTypes = {
   title: PropTypes.string.isRequired,
   box: PropTypes.object,
   chartId: PropTypes.string.isRequired,
 };
 
-export default AreaChart;
+export default BarChart;
