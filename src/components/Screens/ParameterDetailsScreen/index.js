@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
 import { getParameterOfTour, getTour, getParameterOfBoxes } from 'queries';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Loader from 'components/Loader';
 import Card from 'components/Structure/Card';
 import BoxPlotLight from 'components/Structure/BoxPlotLight';
 import { Box } from '@mui/material';
 import MultiLineChart from 'components/Structure/MultiLineChart';
-import Feedback from '../../Structure/Feedback';
+import Feedback from 'components/Structure/Feedback';
+import Selector from 'components/Form/Selector';
 
 const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
   const { tourId } = useParams();
+  const navigate = useNavigate();
+  const navigateToBox = boxId => {
+    navigate(`../box/${boxId}`);
+  };
   const { isLoading: tourParameterLoading, data: tourParameter } = useQuery(
     ['tourParameter', { tourId }],
     getParameterOfTour
@@ -29,10 +34,28 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
     }
   );
 
+  const selectorItems = useMemo(() => {
+    if (boxes) {
+      return boxes.map(box => ({
+        value: box,
+        label: box,
+      }));
+    }
+  }, [boxes]);
+
   if (tourParameterLoading || tourLoading || boxesLoading) return <Loader />;
 
   return (
     <Box>
+      <Box mb={2}>
+        <Selector
+          items={selectorItems}
+          onSelect={navigateToBox}
+          selected={''}
+          placeholder="Box"
+          description="Select a Box"
+        />
+      </Box>
       <Box display="flex">
         <Card width={380}>
           {type === 'TEMPERATURE' ? (

@@ -89,3 +89,11 @@ export const getParameterOfBoxes = async ({ queryKey }) => {
     )
   );
 };
+
+export const getParameterOfBox = async ({ queryKey }) => {
+  // eslint-disable-next-line
+  const [_key, { boxId }] = queryKey;
+  const res = await fetch(`${REST_ENDPOINT}/parameter/box/${boxId}`);
+
+  return res.json();
+};

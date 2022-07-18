@@ -9,6 +9,7 @@ import {
 import PrivateRoutes from 'components/Auth/PrivateRoutes';
 import HomeScreen from 'components/Screens/HomeScreen';
 import TourScreen from 'components/Screens/TourScreen';
+import BoxTemperatureScreen from 'components/Screens/BoxTemperatureScreen';
 import ParameterDetailsScreen from 'components/Screens/ParameterDetailsScreen';
 import { QueryParamProvider } from 'use-query-params';
 import { CustomerDataProvider } from 'components/Contexts';
@@ -26,10 +27,16 @@ function App() {
                 <Route path="" element={<HomeScreen />} />
                 <Route path=":tourId">
                   <Route path="" element={<TourScreen />} />
-                  <Route
-                    path="temperature"
-                    element={<ParameterDetailsScreen type="TEMPERATURE" />}
-                  />
+                  <Route path="temperature">
+                    <Route
+                      path=""
+                      element={<ParameterDetailsScreen type="TEMPERATURE" />}
+                    />
+                    <Route
+                      path="box/:boxId"
+                      element={<BoxTemperatureScreen />}
+                    />
+                  </Route>
                   <Route
                     path="vibration"
                     element={<ParameterDetailsScreen type="VIBRATION" />}
