@@ -8,7 +8,6 @@ import BoxPlotLight from 'components/Structure/BoxPlotLight';
 import { Box } from '@mui/material';
 import Feedback from 'components/Structure/Feedback';
 import AreaChart from 'components/Structure/AreaChart';
-import MultiLineChart from '../../Structure/MultiLineChart';
 
 const BoxTemperatureScreen = () => {
   const { tourId, boxId } = useParams();
@@ -34,9 +33,9 @@ const BoxTemperatureScreen = () => {
           />
         </Card>
         <Box ml={2}>
-          <Card width={500}>
+          <Card width={590}>
             <AreaChart
-              title="Temperature"
+              title={`Temperature of ${boxId}`}
               chartId={`area-chart-tour-${tourId}-box-${boxId}`}
               box={data}
             />

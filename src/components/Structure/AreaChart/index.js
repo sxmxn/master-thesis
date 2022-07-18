@@ -14,6 +14,15 @@ const AreaChart = ({ title, chartId, box }) => {
   const [chartState, setChartState] = useState({
     series: [],
     options: {
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shadeIntensity: 1,
+          opacityFrom: 0.7,
+          opacityTo: 0.3,
+          stops: [0, 90, 100],
+        },
+      },
       colors: ['#E2FEFF'],
       markers: {
         size: 6,
@@ -41,7 +50,7 @@ const AreaChart = ({ title, chartId, box }) => {
       },
       chart: {
         id: chartId,
-        height: 300,
+        height: 250,
         toolbar: {
           show: false,
         },
@@ -75,7 +84,7 @@ const AreaChart = ({ title, chartId, box }) => {
         {
           name: box.id,
           data: box.temperature?.details.map(dataPoint => dataPoint.value),
-          type: 'line',
+          type: 'area',
         },
       ];
 
@@ -103,8 +112,7 @@ const AreaChart = ({ title, chartId, box }) => {
         options={chartState.options}
         series={chartState.series}
         type="area"
-        height={250}
-        width={450}
+        width={550}
       />
     </Container>
   );
