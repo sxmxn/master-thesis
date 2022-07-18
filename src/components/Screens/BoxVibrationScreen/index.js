@@ -8,6 +8,7 @@ import BoxPlotLight from 'components/Structure/BoxPlotLight';
 import { Box } from '@mui/material';
 import Feedback from 'components/Structure/Feedback';
 import BarChart from 'components/Structure/BarChart';
+import Histogram from 'components/Structure/Histogram';
 
 const BoxVibrationScreen = () => {
   const { tourId, boxId } = useParams();
@@ -43,7 +44,16 @@ const BoxVibrationScreen = () => {
           </Card>
         </Box>
       </Box>
-      <Box mt={2} height={250}>
+      <Box mt={2} height={250} display="flex">
+        <Box mr={2}>
+          <Card width={500}>
+            <Histogram
+              chartId={`histogram-vibration-tour-${tourId}-box-${boxId}`}
+              title="Vibration (Relative Frequency of Displacement Index)"
+              box={data}
+            />
+          </Card>
+        </Box>
         <Feedback
           rating={data.vibration.feedback.rating}
           text={data.vibration.feedback.text}
