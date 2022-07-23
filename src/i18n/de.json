@@ -44,5 +44,6 @@
   "bar-chart": {
     "vibration": "Erschütterung (Displacement Index über die Zeit)"
   },
-  "available-language": "EN"
+  "available-language": "EN",
+  "live-map": "Alle Live-Touren"
 }

@@ -91,9 +91,15 @@ export const getParameterOfBoxes = async ({ queryKey }) => {
 };
 
 export const getParameterOfBox = async ({ queryKey }) => {
-  // eslint-disable-next-line
+  // eslint-disable-next-lineå
   const [_key, { boxId }] = queryKey;
   const res = await fetch(`${REST_ENDPOINT}/parameter/box/${boxId}`);
+
+  return res.json();
+};
+
+export const getLiveTours = async () => {
+  const res = await fetch(`${REST_ENDPOINT}/tours/live`);
 
   return res.json();
 };
