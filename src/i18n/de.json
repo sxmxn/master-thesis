@@ -1,0 +1,48 @@
+{
+  "select-customer": "Wähle Kund*in",
+  "customer": "Kund*in",
+  "customer-table": {
+    "tours": "Touren",
+    "name": "Name",
+    "driver": "Fahrer*in",
+    "date": "Datum",
+    "start-time": "Startzeitpunkt",
+    "end-time": "Endzeitpunkt",
+    "stops": "Stopps",
+    "status": "Status"
+  },
+  "box-plot": {
+    "average-temperature": "Durchschnittliche Temperatur",
+    "average-vibration": "Durchschnittliche Erschütterung"
+  },
+  "vehicle-details": {
+    "vehicle-details": "Fahrzeugs Details",
+    "load-capacity": "Ladekapazität",
+    "free": "frei",
+    "loaded": "geladen",
+    "box-capacity": "Boxkapazität"
+  },
+  "stop-table": {
+    "stops": "Stopps",
+    "company": "Unternehmen",
+    "handover-person": "Person bei Übergabe",
+    "planned-arrival": "Geplante Ankunftszeit",
+    "expected-arrival": "Erwartet Ankunftszeit",
+    "status": "Status"
+  },
+  "select-box": "Wähle eine Kiste",
+  "box": "Kiste",
+  "multi-line-graph": {
+    "temperature": "Temperatur"
+  },
+  "temperatur-line-graph": {
+    "temperature-of": "Temperatur von"
+  },
+  "histogram": {
+    "vibration": "Erschütterung (Relative Frequenz des Displacement Index)"
+  },
+  "bar-chart": {
+    "vibration": "Erschütterung (Displacement Index über die Zeit)"
+  },
+  "available-language": "EN"
+}

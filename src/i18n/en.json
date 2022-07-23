@@ -1,0 +1,48 @@
+{
+  "select-customer": "Select customer",
+  "customer": "customer",
+  "customer-table": {
+    "tours": "Tours",
+    "name": "Name",
+    "driver": "Driver",
+    "date": "Date",
+    "start-time": "Start time",
+    "end-time": "End Time",
+    "stops": "Stops",
+    "status": "Status"
+  },
+  "box-plot": {
+    "average-temperature": "Average Temperature",
+    "average-vibration": "Average Vibration"
+  },
+  "vehicle-details": {
+    "vehicle-details": "Vehicle Details",
+    "load-capacity": "Load capacity",
+    "free": "free",
+    "loaded": "loaded",
+    "box-capacity": "Box capacity"
+  },
+  "stop-table": {
+    "stops": "stops",
+    "company": "company",
+    "handover-person": "Handover Person",
+    "planned-arrival": "Planned Arrival Time",
+    "expected-arrival": "Expected Arrival Time",
+    "status": "Status"
+  },
+  "select-box": "Select Box",
+  "box": "Box",
+  "multi-line-graph": {
+    "temperature": "Temperature"
+  },
+  "temperatur-line-graph": {
+    "temperature-of": "Temperature of"
+  },
+  "histogram": {
+    "vibration": "Vibration (Relative Frequency of Displacement Index)"
+  },
+  "bar-chart": {
+    "vibration": "Erschütterung (Displacement Index over Time)"
+  },
+  "available-language": "DE"
+}

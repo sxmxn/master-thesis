@@ -5,8 +5,10 @@ import Loader from 'components/Loader';
 import Selector from 'components/Form/Selector';
 import TourTable from 'components/TourTable';
 import { useGlobalData } from 'hooks';
+import { useTranslation } from 'react-i18next';
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   const { isLoading, data } = useQuery('customers', getAllCustomers);
   const { isLoading: toursLoading, data: tours } = useQuery(
     'tours',
@@ -34,8 +36,8 @@ const Dashboard = () => {
         items={selectorItems}
         onSelect={setCustomer}
         selected={customer}
-        placeholder="Customer"
-        description="Select Customer"
+        placeholder={t('customer')}
+        description={t('select-customer')}
       />
       <TourTable tours={tours} />
     </div>

@@ -9,6 +9,8 @@ import { GridThemeProvider } from 'styled-bootstrap-grid';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { I18nextProvider } from 'react-i18next';
+import i18n from 'utils/i18n';
 
 // Create a client
 const queryClient = new QueryClient();
@@ -20,8 +22,10 @@ root.render(
       <ThemeProvider theme={theme}>
         <MuiThemeProvider theme={theme}>
           <GridThemeProvider gridTheme={gridTheme}>
-            <GlobalStyle />
-            <App />
+            <I18nextProvider i18n={i18n}>
+              <GlobalStyle />
+              <App />
+            </I18nextProvider>
           </GridThemeProvider>
         </MuiThemeProvider>
       </ThemeProvider>

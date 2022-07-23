@@ -9,13 +9,24 @@ import {
   ListItemText,
 } from '@mui/material';
 import { Truck as Logo } from '@styled-icons/boxicons-solid/Truck';
-import { useTheme } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { useMenuItems } from 'hooks';
 import { useNavigate, useLocation, matchPath } from 'react-router';
+import { useTranslation } from 'react-i18next';
+import { Globe } from '@styled-icons/bootstrap/Globe';
 
 const DRAWER_WIDTH = 300;
 
+const LanguageContainer = styled.div`
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 2rem;
+  font-weight: 600;
+  display: flex;
+`;
+
 const Drawer = () => {
+  const { t, i18n } = useTranslation();
   const { palette } = useTheme();
   const { menuItems } = useMenuItems();
   const navigate = useNavigate();
@@ -26,6 +37,14 @@ const Drawer = () => {
     if (pathname.includes(url)) return true;
 
     return !!matchPath(url, pathname);
+  };
+
+  const handleChangeLanguage = () => {
+    if (i18n.language === 'en') {
+      i18n.changeLanguage('de');
+    } else {
+      i18n.changeLanguage('en');
+    }
   };
 
   return (
@@ -72,6 +91,20 @@ const Drawer = () => {
           );
         })}
       </List>
+      <Box
+        display="flex"
+        height="100%"
+        alignItems="flex-end"
+        justifyContent="center"
+        marginBottom={4}
+      >
+        <LanguageContainer onClick={handleChangeLanguage}>
+          <Box mr={1} display="flex" alignItems="center">
+            <Globe size={20} />
+          </Box>{' '}
+          {t('available-language')}
+        </LanguageContainer>
+      </Box>
     </MuiDrawer>
   );
 };

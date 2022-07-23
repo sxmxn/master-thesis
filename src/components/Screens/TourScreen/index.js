@@ -12,8 +12,10 @@ import Map from 'components/Map';
 import { useTheme } from 'styled-components';
 import VehicleDetails from 'components/Structure/VehicleDetails';
 import { useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 const TourScreen = () => {
+  const { t } = useTranslation();
   const { palette } = useTheme();
   const { tourId } = useParams();
   const { customer } = useGlobalData();
@@ -43,7 +45,7 @@ const TourScreen = () => {
         <Card width={380} onClick={() => navigate('temperature')}>
           <BoxPlotLight
             boxes={tourParameter.boxesTemperature}
-            title="Average Temperature"
+            title={t('box-plot.average-temperature')}
             chartId={`pox-plot-temperature-tour-${tourId}`}
           />
         </Card>
@@ -51,7 +53,7 @@ const TourScreen = () => {
           <Card width={380} onClick={() => navigate('vibration')}>
             <BoxPlotLight
               boxes={tourParameter.boxesVibration}
-              title="Average Vibration"
+              title={t('box-plot.average-vibration')}
               chartId={`pox-plot-vibration-tour-${tourId}`}
               type="VIBRATION"
             />
