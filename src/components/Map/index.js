@@ -1,4 +1,11 @@
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import {
+  MapContainer,
+  TileLayer,
+  GeoJSON,
+  Marker,
+  FeatureGroup,
+  Popup,
+} from 'react-leaflet';
 import React from 'react';
 import 'leaflet/dist/leaflet.css';
 import PropTypes from 'prop-types';
@@ -15,14 +22,14 @@ const StyledMapContainer = styled(MapContainer)`
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  iconRetinaUrl: require('assets/pin.png'),
+  iconUrl: require('assets/pin.png'),
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
 const CENTER_DEFAULT = [52.5317, 13.3817];
 
-const Map = ({ mapHeight = 300, mapData }) => {
+const Map = ({ mapHeight = 300, mapData, geoJson = true }) => {
   return (
     <StyledMapContainer
       center={
@@ -41,7 +48,34 @@ const Map = ({ mapHeight = 300, mapData }) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
       />
-      {!!mapData && <GeoJSON key="test" data={mapData} />}
+      {!!mapData && geoJson ? (
+        <GeoJSON key="test" data={mapData} style={{ color: '#457B9D' }} />
+      ) : (
+        mapData.features.map((feature, index) => {
+          return (
+            <FeatureGroup color="purple" key={index}>
+              <Popup>
+                <p>{feature.properties.tour}</p>
+                <button
+                  id="button"
+                  className="btn btn-primary"
+                  onClick={e => {
+                    console.log(feature.properties.tourId);
+                  }}
+                >
+                  More Info
+                </button>
+              </Popup>
+              <Marker
+                position={[
+                  feature.geometry.coordinates[1],
+                  feature.geometry.coordinates[0],
+                ]}
+              />
+            </FeatureGroup>
+          );
+        })
+      )}
     </StyledMapContainer>
   );
 };
@@ -49,6 +83,7 @@ const Map = ({ mapHeight = 300, mapData }) => {
 Map.propTypes = {
   mapHeight: PropTypes.number,
   mapData: PropTypes.object,
+  geoJson: PropTypes.bool,
 };
 
 export default Map;

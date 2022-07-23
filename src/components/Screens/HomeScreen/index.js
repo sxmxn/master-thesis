@@ -20,7 +20,11 @@ const Dashboard = () => {
   );
   const { isLoading: liveLoading, data: liveTours } = useQuery(
     'liveTours',
-    getLiveTours
+    getLiveTours,
+    {
+      // refetch every minute
+      refetchInterval: 60000,
+    }
   );
 
   // selected customer is stored in global store because we need it in various places
@@ -59,8 +63,6 @@ const Dashboard = () => {
     };
   }, [liveTours]);
 
-  console.log(geoJsonLiveTours);
-
   if (isLoading || toursLoading || liveLoading) return <Loader />;
 
   return (
@@ -86,7 +88,7 @@ const Dashboard = () => {
             {t('live-map')}
           </Typography>
         </Box>
-        <Map mapData={geoJsonLiveTours} mapHeight={500} />
+        <Map mapData={geoJsonLiveTours} mapHeight={500} geoJson={false} />
       </Box>
     </div>
   );
