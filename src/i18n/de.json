@@ -10,7 +10,10 @@
     "start-time": "Startzeitpunkt",
     "end-time": "Endzeitpunkt",
     "stops": "Stopps",
-    "status": "Status"
+    "status": "Status",
+    "completed": "abgeschlossen",
+    "live": "live",
+    "planned": "geplant"
   },
   "box-plot": {
     "average-temperature": "Durchschnittliche Temperatur",

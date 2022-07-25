@@ -39,10 +39,20 @@ const Dashboard = () => {
     }
   }, [data]);
 
-  const geoJsonLiveTours = useMemo(() => {
-    if (!liveTours) return null;
+  const selectedCustomer = useMemo(() => {
+    if (!customer) return;
+    return data.find(user => user.id === customer);
+  }, [customer]);
 
-    const features = liveTours.map(tour => ({
+  const filteredLiveTours = useMemo(() => {
+    if (!selectedCustomer) return liveTours;
+    return liveTours.filter(tour => selectedCustomer.tours.includes(tour.id));
+  }, [liveTours, selectedCustomer]);
+
+  const geoJsonLiveTours = useMemo(() => {
+    if (!filteredLiveTours) return null;
+
+    const features = filteredLiveTours.map(tour => ({
       type: 'Feature',
       properties: {
         tour: tour?.name,
@@ -61,7 +71,12 @@ const Dashboard = () => {
       type: 'FeatureCollection',
       features: features,
     };
-  }, [liveTours]);
+  }, [filteredLiveTours]);
+
+  const filteredTours = useMemo(() => {
+    if (!selectedCustomer) return tours;
+    return tours.filter(tour => selectedCustomer.tours.includes(tour.id));
+  }, [tours, selectedCustomer]);
 
   if (isLoading || toursLoading || liveLoading) return <Loader />;
 
@@ -74,7 +89,7 @@ const Dashboard = () => {
         placeholder={t('customer')}
         description={t('select-customer')}
       />
-      <TourTable tours={tours} />
+      <TourTable tours={filteredTours} />
       <Box borderRadius={2} mt={2} boxShadow={2} position="relative">
         <Box
           position="absolute"

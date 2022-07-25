@@ -5,6 +5,10 @@ import TableRow from '@mui/material/TableRow';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { Temperature } from '@styled-icons/fluentui-system-filled/Temperature';
+import { PhoneVibrate } from '@styled-icons/bootstrap/PhoneVibrate';
+import { Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 export const StyledTable = styled(TableBodyMui)(({ theme }) => ({
   '& tr': {
@@ -22,6 +26,7 @@ export const StyledTable = styled(TableBodyMui)(({ theme }) => ({
 }));
 
 export default function TableBody({ rows }) {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const navigateToTourOverview = tourId => {
     navigate(`../${tourId}`);
@@ -43,9 +48,13 @@ export default function TableBody({ rows }) {
           <TableCell>{row.startTime}</TableCell>
           <TableCell>{row.endTime}</TableCell>
           <TableCell>{row.stops}</TableCell>
-          <TableCell>{row.status}</TableCell>
           <TableCell>
-            {row.temperaturStatus} | {row.vibrationStatus}
+            <Typography color={getColorStatus(row.status)}>
+              {t(`customer-table.${row.status}`)}
+            </Typography>
+          </TableCell>
+          <TableCell>
+            {getIcons(row.temperaturStatus, row.vibrationStatus)}
           </TableCell>
         </TableRow>
       ))}
@@ -55,4 +64,32 @@ export default function TableBody({ rows }) {
 
 TableBody.propTypes = {
   row: PropTypes.array,
+};
+
+const getIcons = (temperaturStatus, vibrationStatus) => {
+  const temperaturIcon = {
+    GOOD: <Temperature size={25} />,
+    BAD: <Temperature size={25} color="#E63946" />,
+  }[temperaturStatus];
+
+  const vibrationIcon = {
+    GOOD: <PhoneVibrate size={25} />,
+    BAD: <PhoneVibrate size={25} color="#E63946" />,
+  }[vibrationStatus];
+  return (
+    <>
+      {temperaturIcon} {vibrationIcon}
+    </>
+  );
+};
+
+const getColorStatus = status => {
+  switch (status) {
+    case 'completed':
+      return '#A8DADC';
+    case 'live':
+      return '#E63946';
+    default:
+      return '#FFFFF';
+  }
 };
