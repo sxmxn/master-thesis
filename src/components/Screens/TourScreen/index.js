@@ -65,6 +65,7 @@ const TourScreen = () => {
             boxes={tourParameter.boxesTemperature}
             title={t('box-plot.average-temperature')}
             chartId={`pox-plot-temperature-tour-${tourId}`}
+            type="TEMPERATURE"
           />
           <StyledButton
             variant="contained"
