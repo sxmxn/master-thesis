@@ -10,6 +10,7 @@ import {
 import PropTypes from 'prop-types';
 import { useTheme } from 'styled-components';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled(Box)`
   & .MuiOutlinedInput-notchedOutline {
@@ -37,6 +38,7 @@ const Container = styled(Box)`
 
 const Selector = ({ onSelect, items, selected, placeholder, description }) => {
   const { palette } = useTheme();
+  const { t } = useTranslation();
 
   const handleChange = event => {
     onSelect(event.target.value);
@@ -68,6 +70,9 @@ const Selector = ({ onSelect, items, selected, placeholder, description }) => {
           onChange={handleChange}
           label={placeholder}
         >
+          <MenuItem value="">
+            <em>{t('deselect')}</em>
+          </MenuItem>
           {items.map(item => (
             <MenuItem key={item?.value} value={item?.value}>
               {item?.label}

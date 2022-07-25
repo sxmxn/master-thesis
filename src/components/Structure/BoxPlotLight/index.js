@@ -33,6 +33,14 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
       },
     ],
     options: {
+      annotations: {
+        yaxis: [
+          {
+            y: 25,
+            borderColor: '#E63946',
+          },
+        ],
+      },
       dataLabels: {
         enabled: false,
       },

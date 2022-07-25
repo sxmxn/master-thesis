@@ -59,5 +59,6 @@
     "order-details": "Order Details",
     "portions": "Portions",
     "boxes": "Boxes"
-  }
+  },
+  "deselect": "Deselect"
 }
