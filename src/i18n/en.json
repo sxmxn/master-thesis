@@ -51,5 +51,11 @@
     "vibration": "Erschütterung (Displacement Index over Time)"
   },
   "available-language": "DE",
-  "live-map": "All live tours"
+  "live-map": "All live tours",
+  "handover-details": "Handover Details",
+  "order-details": {
+    "order-details": "Order Details",
+    "portions": "Portions",
+    "boxes": "Boxes"
+  }
 }

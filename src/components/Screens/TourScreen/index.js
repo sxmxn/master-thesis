@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { getTour, getTourOfCustomer, getParameterOfTour } from 'queries';
@@ -13,6 +13,8 @@ import { useTheme } from 'styled-components';
 import VehicleDetails from 'components/Structure/VehicleDetails';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import HandoverDetails from 'components/Structure/HandoverDetails';
+import OrderDetails from '../../Structure/OrderDetails';
 
 const TourScreen = () => {
   const { t } = useTranslation();
@@ -60,29 +62,49 @@ const TourScreen = () => {
           </Card>
         </Box>
         <Box ml={2}>
-          <VehicleDetails
-            boxCapacity={data?.vehicleDetails?.box_capacity}
-            loadCapacity={data?.vehicleDetails?.load_capacity}
-            vehicleType={data?.vehicleDetails?.vehicle_type}
+          {!!customerSpecificData && data.status === 'COMPLETED' ? (
+            <HandoverDetails
+              address={customerSpecificData?.handoverDetails?.location?.address}
+              temperature={customerSpecificData?.handoverDetails?.temperature}
+              time={customerSpecificData?.handoverDetails?.date}
+              handoverPerson={customerSpecificData?.handoverDetails?.receiver}
+            />
+          ) : (
+            <VehicleDetails
+              boxCapacity={data?.vehicleDetails?.box_capacity}
+              loadCapacity={data?.vehicleDetails?.load_capacity}
+              vehicleType={data?.vehicleDetails?.vehicle_type}
+            />
+          )}
+        </Box>
+      </Box>
+      {!!customerSpecificData ? (
+        <Box mt={2} width={350}>
+          <OrderDetails
+            portions={customerSpecificData?.order.portions}
+            boxes={customerSpecificData?.order.boxes}
           />
         </Box>
-      </Box>
-      <StopTable stops={data.stops} />
-      <Box borderRadius={2} mt={2} boxShadow={2} position="relative">
-        <Box
-          position="absolute"
-          bgcolor={palette.primary.main}
-          px={5}
-          py={1}
-          zIndex={999}
-          borderRadius={1}
-        >
-          <Typography fontWeight={500} color="#fff">
-            {data?.name}
-          </Typography>
-        </Box>
-        <Map mapData={data.route} />
-      </Box>
+      ) : (
+        <Fragment>
+          <StopTable stops={data.stops} />
+          <Box borderRadius={2} mt={2} boxShadow={2} position="relative">
+            <Box
+              position="absolute"
+              bgcolor={palette.primary.main}
+              px={5}
+              py={1}
+              zIndex={999}
+              borderRadius={1}
+            >
+              <Typography fontWeight={500} color="#fff">
+                {data?.name}
+              </Typography>
+            </Box>
+            <Map mapData={data.route} />
+          </Box>
+        </Fragment>
+      )}
     </div>
   );
 };
