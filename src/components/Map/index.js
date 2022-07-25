@@ -27,19 +27,23 @@ const PopUpTitle = styled(Typography)`
   font-weight: 700 !important;
 `;
 
-delete L.Icon.Default.prototype._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('assets/pin.png'),
-  iconUrl: require('assets/pin.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-});
-
 const CENTER_DEFAULT = [52.5317, 13.3817];
 
 const Map = ({ mapHeight = 300, mapData, liveMap = false }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
+  delete L.Icon.Default.prototype._getIconUrl;
+
+  L.Icon.Default.mergeOptions({
+    iconRetinaUrl: liveMap
+      ? require('assets/bxs_truck.png')
+      : require('assets/pin.png'),
+    iconUrl: liveMap
+      ? require('assets/bxs_truck.png')
+      : require('assets/pin.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+  });
 
   return (
     <StyledMapContainer

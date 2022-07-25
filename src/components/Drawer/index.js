@@ -8,12 +8,13 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { Truck as Logo } from '@styled-icons/boxicons-solid/Truck';
+import { Truck } from '@styled-icons/boxicons-solid/Truck';
 import styled, { useTheme } from 'styled-components';
 import { useMenuItems } from 'hooks';
 import { useNavigate, useLocation, matchPath } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Globe } from '@styled-icons/bootstrap/Globe';
+import Logo from 'assets/bxs_truck.svg';
 
 const DRAWER_WIDTH = 300;
 
@@ -23,6 +24,11 @@ const LanguageContainer = styled.div`
   margin-right: 2rem;
   font-weight: 600;
   display: flex;
+`;
+
+const TruckLogo = styled.img`
+  height: 80px;
+  width: 80px;
 `;
 
 const Drawer = () => {
@@ -64,7 +70,7 @@ const Drawer = () => {
       open
     >
       <Box display="flex" justifyContent="center" alignItems="center" my={5}>
-        <Logo size={80} />
+        <TruckLogo src={Logo} alt="Tuck" />
       </Box>
       <List>
         {menuItems.map(({ text, url, icon }, index) => {
