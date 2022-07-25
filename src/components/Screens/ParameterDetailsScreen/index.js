@@ -67,6 +67,7 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
               boxes={tourParameter.boxesTemperature}
               title="Average Temperature"
               chartId={`pox-plot-temperature-tour-${tourId}`}
+              type="TEMPERATURE"
             />
           ) : (
             <BoxPlotLight

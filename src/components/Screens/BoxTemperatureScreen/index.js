@@ -36,6 +36,7 @@ const BoxTemperatureScreen = () => {
             boxes={boxPlotData}
             title="Average Temperature"
             chartId={`pox-plot-temperature-tour-${tourId}`}
+            type="TEMPERATURE"
           />
         </Card>
         <Box ml={2}>

@@ -33,16 +33,6 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
       },
     ],
     options: {
-      annotations: {
-        yaxis: [
-          {
-            y: 25,
-            borderColor: '#E63946',
-            offsetX: boxes.length <= 1 ? 0 : -50,
-            width: boxes.length <= 1 ? '100%' : '200%',
-          },
-        ],
-      },
       dataLabels: {
         enabled: false,
       },
@@ -100,11 +90,35 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
         },
       ];
 
+      const showAnnotations = boxes.some(box => box.max > 23);
+
+      //build options to set annotations dynamically
+      const options = {
+        ...boxPlotLightState.options,
+        ...(showAnnotations &&
+          type === 'TEMPERATURE' && {
+            annotations: {
+              yaxis: [
+                {
+                  y: 25,
+                  borderColor: '#E63946',
+                  offsetX: boxes.length <= 1 ? 0 : -50,
+                  width: boxes.length <= 1 ? '100%' : '200%',
+                },
+              ],
+            },
+          }),
+      };
+
       // rebuild chart with new serie data
-      apexchart.exec(chartId, 'updateOptions', { series: seriesData });
+      apexchart.exec(chartId, 'updateOptions', {
+        ...options,
+        series: seriesData,
+      });
 
       setBoxPlotLightState({
         series: seriesData,
+        options: options,
         ...boxPlotLightState,
       });
     }
