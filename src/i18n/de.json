@@ -17,7 +17,9 @@
   },
   "box-plot": {
     "average-temperature": "Durchschnittliche Temperatur",
-    "average-vibration": "Durchschnittliche Erschütterung"
+    "average-vibration": "Durchschnittliche Erschütterung",
+    "vibration-details": "Vibrationsdetails",
+    "temperature-details": "Temperaturdetails"
   },
   "vehicle-details": {
     "vehicle-details": "Fahrzeugs Details",

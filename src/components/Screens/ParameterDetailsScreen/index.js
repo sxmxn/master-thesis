@@ -10,6 +10,7 @@ import { Box } from '@mui/material';
 import MultiLineChart from 'components/Structure/MultiLineChart';
 import Feedback from 'components/Structure/Feedback';
 import Selector from 'components/Form/Selector';
+import PageHeader from '../../Form/PageHeader';
 
 const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
   const { tourId } = useParams();
@@ -47,14 +48,17 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
 
   return (
     <Box>
-      <Box mb={2}>
-        <Selector
-          items={selectorItems}
-          onSelect={navigateToBox}
-          selected={''}
-          placeholder="Box"
-          description="Select a Box"
-        />
+      <Box mb={2} display="flex">
+        <PageHeader goBack={() => navigate(-1)} />
+        <Box ml={1}>
+          <Selector
+            items={selectorItems}
+            onSelect={navigateToBox}
+            selected={''}
+            placeholder="Box"
+            description="Select a Box"
+          />
+        </Box>
       </Box>
       <Box display="flex">
         <Card width={380}>

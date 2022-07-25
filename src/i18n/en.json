@@ -17,7 +17,9 @@
   },
   "box-plot": {
     "average-temperature": "Average Temperature",
-    "average-vibration": "Average Vibration"
+    "average-vibration": "Average Vibration",
+    "vibration-details": "Vibration Details",
+    "temperature-details": "Temperature Details"
   },
   "vehicle-details": {
     "vehicle-details": "Vehicle Details",

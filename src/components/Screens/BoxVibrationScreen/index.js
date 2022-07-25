@@ -9,10 +9,13 @@ import { Box } from '@mui/material';
 import Feedback from 'components/Structure/Feedback';
 import BarChart from 'components/Structure/BarChart';
 import Histogram from 'components/Structure/Histogram';
+import PageHeader from 'components/Form/PageHeader';
+import { useNavigate } from 'react-router';
 
 const BoxVibrationScreen = () => {
   const { tourId, boxId } = useParams();
   const { isLoading, data } = useQuery(['box', { boxId }], getParameterOfBox);
+  const navigate = useNavigate();
 
   if (isLoading) return <Loader />;
 
@@ -25,6 +28,9 @@ const BoxVibrationScreen = () => {
 
   return (
     <Box>
+      <Box mb={2}>
+        <PageHeader goBack={() => navigate(-1)} title={boxId} />
+      </Box>
       <Box display="flex">
         <Card width={380}>
           <BoxPlotLight

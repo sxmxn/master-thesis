@@ -47,6 +47,6 @@ export default function HandoverDetails({
 HandoverDetails.propTypes = {
   address: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
-  temperature: PropTypes.string.isRequired,
+  temperature: PropTypes.number.isRequired,
   handoverPerson: PropTypes.string.isRequired,
 };

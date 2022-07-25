@@ -140,7 +140,7 @@
       "responses": [
         {
           "uuid": "e8cb31ea-c880-41aa-adaf-0b7939a03de6",
-          "body": "\n    {\n      \"id\": \"customerSpecificTour24\",\n      \"handover_details\": {\n        \"location\": {\n          \"address\": \"Rundling 23, 23847 Pölitz\",\n          \"coordinates\": {\n            \"lng\": \"53.77560439465293\", \n            \"lat\": \"10.385247147813534\"}\n        },\n        \"date\": \"{{dateTimeShift date='2021-01-01 10:23' format='yyyy-MM-dd HH:mm' years=1 months=1 }}\",\n        \"temperature\": 17,\n        \"receiver\": \"Roza Kristiane\"\n      },\n      \"order\": {\n        \"portions\": 75,\n        \"boxes\": 7\n      }\n    }\n",
+          "body": "\n    {\n      \"id\": \"customerSpecificTour24\",\n      \"cutsomer_name\": \"Company GmbH\",\n      \"handover_details\": {\n        \"location\": {\n          \"address\": \"Rundling 23, 23847 Pölitz\",\n          \"coordinates\": {\n            \"lng\": \"53.77560439465293\", \n            \"lat\": \"10.385247147813534\"}\n        },\n        \"date\": \"{{dateTimeShift date='2021-01-01 10:23' format='yyyy-MM-dd HH:mm' years=1 months=1 }}\",\n        \"temperature\": 17,\n        \"receiver\": \"Roza Kristiane\"\n      },\n      \"order\": {\n        \"portions\": 75,\n        \"boxes\": 7\n      }\n    }\n",
           "latency": 0,
           "statusCode": 200,
           "label": "",

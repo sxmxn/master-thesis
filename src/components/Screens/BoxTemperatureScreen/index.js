@@ -8,8 +8,11 @@ import BoxPlotLight from 'components/Structure/BoxPlotLight';
 import { Box } from '@mui/material';
 import Feedback from 'components/Structure/Feedback';
 import AreaChart from 'components/Structure/AreaChart';
+import { useNavigate } from 'react-router';
+import PageHeader from 'components/Form/PageHeader';
 
 const BoxTemperatureScreen = () => {
+  const navigate = useNavigate();
   const { tourId, boxId } = useParams();
   const { isLoading, data } = useQuery(['box', { boxId }], getParameterOfBox);
 
@@ -24,6 +27,9 @@ const BoxTemperatureScreen = () => {
 
   return (
     <Box>
+      <Box mb={2}>
+        <PageHeader goBack={() => navigate(-1)} title={boxId} />
+      </Box>
       <Box display="flex">
         <Card width={380}>
           <BoxPlotLight

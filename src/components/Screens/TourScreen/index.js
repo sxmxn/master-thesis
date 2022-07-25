@@ -6,7 +6,7 @@ import Loader from 'components/Loader';
 import { useGlobalData } from 'hooks';
 import Card from 'components/Structure/Card';
 import BoxPlotLight from 'components/Structure/BoxPlotLight';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import StopTable from 'components/StopTable';
 import Map from 'components/Map';
 import { useTheme } from 'styled-components';
@@ -14,7 +14,13 @@ import VehicleDetails from 'components/Structure/VehicleDetails';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import HandoverDetails from 'components/Structure/HandoverDetails';
-import OrderDetails from '../../Structure/OrderDetails';
+import OrderDetails from 'components/Structure/OrderDetails';
+import styled from 'styled-components';
+import PageHeader from 'components/Form/PageHeader';
+
+const StyledButton = styled(Button)`
+  background-color: ${({ theme }) => theme.palette.primary.light} !important;
+`;
 
 const TourScreen = () => {
   const { t } = useTranslation();
@@ -43,22 +49,44 @@ const TourScreen = () => {
 
   return (
     <div>
+      <Box mb={2}>
+        <PageHeader
+          goBack={() => navigate(-1)}
+          title={
+            customerSpecificData
+              ? `${customerSpecificData.customerName} | ${data.name}`
+              : data.name
+          }
+        />
+      </Box>
       <Box display="flex">
-        <Card width={380} onClick={() => navigate('temperature')}>
+        <Card width={380} flexDirection="column">
           <BoxPlotLight
             boxes={tourParameter.boxesTemperature}
             title={t('box-plot.average-temperature')}
             chartId={`pox-plot-temperature-tour-${tourId}`}
           />
+          <StyledButton
+            variant="contained"
+            onClick={() => navigate('temperature')}
+          >
+            {t('box-plot.temperature-details')}
+          </StyledButton>
         </Card>
         <Box ml={2}>
-          <Card width={380} onClick={() => navigate('vibration')}>
+          <Card width={380} flexDirection="column">
             <BoxPlotLight
               boxes={tourParameter.boxesVibration}
               title={t('box-plot.average-vibration')}
               chartId={`pox-plot-vibration-tour-${tourId}`}
               type="VIBRATION"
             />
+            <StyledButton
+              variant="contained"
+              onClick={() => navigate('vibration')}
+            >
+              {t('box-plot.vibration-details')}
+            </StyledButton>
           </Card>
         </Box>
         <Box ml={2}>
