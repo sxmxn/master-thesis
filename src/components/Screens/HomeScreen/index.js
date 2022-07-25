@@ -42,7 +42,7 @@ const Dashboard = () => {
   const selectedCustomer = useMemo(() => {
     if (!customer) return;
     return data.find(user => user.id === customer);
-  }, [customer]);
+  }, [customer, data]);
 
   const filteredLiveTours = useMemo(() => {
     if (!selectedCustomer) return liveTours;

@@ -11,9 +11,9 @@
     "end-time": "Endzeitpunkt",
     "stops": "Stopps",
     "status": "Status",
-    "completed": "abgeschlossen",
-    "live": "live",
-    "planned": "geplant"
+    "COMPLETED": "abgeschlossen",
+    "LIVE": "live",
+    "PLANNED": "geplant"
   },
   "box-plot": {
     "average-temperature": "Durchschnittliche Temperatur",
@@ -32,7 +32,9 @@
     "handover-person": "Person bei Übergabe",
     "planned-arrival": "Geplante Ankunftszeit",
     "expected-arrival": "Erwartet Ankunftszeit",
-    "status": "Status"
+    "status": "Status",
+    "COMPLETED": "abgeschlossen",
+    "IN_PROGRESS": "wird ausgeführt"
   },
   "select-box": "Wähle eine Kiste",
   "box": "Kiste",

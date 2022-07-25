@@ -4,6 +4,9 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { getColorStatus } from 'utils/colors';
+import { Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 export const StyledTable = styled(TableBodyMui)(({ theme }) => ({
   '& tr': {
@@ -21,6 +24,8 @@ export const StyledTable = styled(TableBodyMui)(({ theme }) => ({
 }));
 
 export default function TableBody({ rows }) {
+  const { t } = useTranslation();
+
   return (
     <StyledTable>
       {rows.map((row, index) => {
@@ -42,7 +47,11 @@ export default function TableBody({ rows }) {
             <TableCell>{handoverPerson}</TableCell>
             <TableCell>{plannedArrival}</TableCell>
             <TableCell>{expectedArrival}</TableCell>
-            <TableCell>{status}</TableCell>
+            <TableCell>
+              <Typography color={getColorStatus(status)}>
+                {t(`stop-table.${status}`)}
+              </Typography>
+            </TableCell>
           </TableRow>
         );
       })}

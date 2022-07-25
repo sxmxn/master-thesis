@@ -8,7 +8,6 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { Truck } from '@styled-icons/boxicons-solid/Truck';
 import styled, { useTheme } from 'styled-components';
 import { useMenuItems } from 'hooks';
 import { useNavigate, useLocation, matchPath } from 'react-router';

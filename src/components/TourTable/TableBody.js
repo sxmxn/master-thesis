@@ -9,6 +9,7 @@ import { Temperature } from '@styled-icons/fluentui-system-filled/Temperature';
 import { PhoneVibrate } from '@styled-icons/bootstrap/PhoneVibrate';
 import { Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { getColorStatus } from 'utils/colors';
 
 export const StyledTable = styled(TableBodyMui)(({ theme }) => ({
   '& tr': {
@@ -81,15 +82,4 @@ const getIcons = (temperaturStatus, vibrationStatus) => {
       {temperaturIcon} {vibrationIcon}
     </>
   );
-};
-
-const getColorStatus = status => {
-  switch (status) {
-    case 'completed':
-      return '#A8DADC';
-    case 'live':
-      return '#E63946';
-    default:
-      return '#FFFFF';
-  }
 };

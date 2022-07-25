@@ -11,9 +11,9 @@
     "end-time": "End Time",
     "stops": "Stops",
     "status": "Status",
-    "completed": "completed",
-    "live": "live",
-    "planned": "planned"
+    "COMPLETED": "completed",
+    "LIVE": "live",
+    "PLANNED": "planned"
   },
   "box-plot": {
     "average-temperature": "Average Temperature",
@@ -32,7 +32,9 @@
     "handover-person": "Handover Person",
     "planned-arrival": "Planned Arrival Time",
     "expected-arrival": "Expected Arrival Time",
-    "status": "Status"
+    "status": "Status",
+    "COMPLETED": "completed",
+    "IN_PROGRESS": "in progress"
   },
   "select-box": "Select Box",
   "box": "Box",
