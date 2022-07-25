@@ -1,6 +1,7 @@
 {
   "select-customer": "Wähle Kund*in",
   "customer": "Kund*in",
+  "more-info": "Details",
   "customer-table": {
     "tours": "Touren",
     "name": "Name",

@@ -88,7 +88,7 @@ const Dashboard = () => {
             {t('live-map')}
           </Typography>
         </Box>
-        <Map mapData={geoJsonLiveTours} mapHeight={500} geoJson={false} />
+        <Map mapData={geoJsonLiveTours} mapHeight={500} liveMap />
       </Box>
     </div>
   );
