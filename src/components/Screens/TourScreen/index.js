@@ -60,7 +60,7 @@ const TourScreen = () => {
         />
       </Box>
       <Box display="flex">
-        <Card width={380} flexDirection="column">
+        <Card width={380} minWidth={380} height={340} flexDirection="column">
           <BoxPlotLight
             boxes={tourParameter.boxesTemperature}
             title={t('box-plot.average-temperature')}
@@ -74,7 +74,7 @@ const TourScreen = () => {
           </StyledButton>
         </Card>
         <Box ml={2}>
-          <Card width={380} flexDirection="column">
+          <Card width={380} height={340} flexDirection="column">
             <BoxPlotLight
               boxes={tourParameter.boxesVibration}
               title={t('box-plot.average-vibration')}

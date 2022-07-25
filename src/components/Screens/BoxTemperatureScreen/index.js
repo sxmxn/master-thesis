@@ -31,7 +31,7 @@ const BoxTemperatureScreen = () => {
         <PageHeader goBack={() => navigate(-1)} title={boxId} />
       </Box>
       <Box display="flex">
-        <Card width={380}>
+        <Card width={380} minWidth={380}>
           <BoxPlotLight
             boxes={boxPlotData}
             title="Average Temperature"

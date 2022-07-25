@@ -61,7 +61,7 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
         </Box>
       </Box>
       <Box display="flex">
-        <Card width={380}>
+        <Card width={380} minWidth={380}>
           {type === 'TEMPERATURE' ? (
             <BoxPlotLight
               boxes={tourParameter.boxesTemperature}

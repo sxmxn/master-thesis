@@ -38,6 +38,8 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
           {
             y: 25,
             borderColor: '#E63946',
+            offsetX: boxes.length <= 1 ? 0 : -50,
+            width: boxes.length <= 1 ? '100%' : '200%',
           },
         ],
       },
