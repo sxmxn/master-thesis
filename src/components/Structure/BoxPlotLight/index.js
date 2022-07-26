@@ -11,13 +11,13 @@ export const Container = styled.div`
   
   .apexcharts-boxPlot-series {
     text {
-      fill: #333333 !important;
+      fill: ${({ theme }) => theme.palette.primary.main} !important;
     };
     path {
       stroke-width: 4;
       stroke-linejoin: round;
-      stroke: #E2FEFF;
-      fill: #E2FEFF;
+      stroke: ${({ theme }) => theme.palette.primary.lighter};
+      fill: ${({ theme }) => theme.palette.primary.lighter};
     }
     
     
@@ -49,13 +49,10 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
         },
         style: {
           colors: ['transparent'],
-          fontSize: '12px',
-          fontWeight: 'bold',
         },
         offsetY: 0,
         background: {
           enabled: true,
-          foreColor: '#333333',
           borderColor: 'transparent',
         },
       },
