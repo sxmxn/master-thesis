@@ -22,8 +22,8 @@ const Dashboard = () => {
     'liveTours',
     getLiveTours,
     {
-      // refetch every minute
-      refetchInterval: 60000,
+      // refetch every 6 seconds
+      refetchInterval: 6000,
     }
   );
 

@@ -17,7 +17,7 @@ export default function HandoverDetails({
   const { t } = useTranslation();
 
   return (
-    <Card display="block">
+    <Card display="block" minWidth={300} width="auto">
       <Typography fontWeight={500} mb={2} color="#fff">
         {t('handover-details')}
       </Typography>

@@ -40,7 +40,7 @@
       "responses": [
         {
           "uuid": "f8579e5d-61cc-4564-881c-abe7c71a3ad8",
-          "body": "[\n  {\n    \"id\": \"tour24\",\n    \"name\": \"Tour 24\",\n    \"location\": {\n      \"address\": \"\",\n      \"coordinates\": {\n        \"lng\": 12.483901977539062,\n        \"lat\": 53.16869454573372\n      }\n    }\n  },\n  {\n    \"id\": \"tour27\",\n    \"name\": \"Tour 27\",\n    \"location\": {\n      \"address\": \"\",\n      \"coordinates\": {\n        \"lng\": 12.580204010009766,\n        \"lat\": 53.35249815992116\n      }\n    }\n  },\n  {\n    \"id\": \"tour182\",\n    \"name\": \"Tour 182\",\n    \"location\": {\n      \"address\": \"\",\n      \"coordinates\": {\n        \"lng\": 12.580204010009766,\n        \"lat\": 52.71997028994131\n      }\n    }\n  }\n]",
+          "body": "[\n  {\n    \"id\": \"tour24\",\n    \"name\": \"Tour 24\",\n    \"location\": {\n      \"address\": \"\",\n      \"coordinates\": {\n        \"lng\": {{float 12 12}},\n        \"lat\": {{float 52 53}}\n      }\n    }\n  },\n  {\n    \"id\": \"tour27\",\n    \"name\": \"Tour 27\",\n    \"location\": {\n      \"address\": \"\",\n      \"coordinates\": {\n        \"lng\": 12.580204010009766,\n        \"lat\": 53.35249815992116\n      }\n    }\n  },\n  {\n    \"id\": \"tour182\",\n    \"name\": \"Tour 182\",\n    \"location\": {\n      \"address\": \"\",\n      \"coordinates\": {\n        \"lng\": 12.580204010009766,\n        \"lat\": 52.71997028994131\n      }\n    }\n  }\n]",
           "latency": 1000,
           "statusCode": 200,
           "label": "",

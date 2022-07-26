@@ -20,7 +20,7 @@ export default function VehicleDetails({
   const { t } = useTranslation();
 
   return (
-    <Card display="block">
+    <Card display="block" minWidth={300} width="auto">
       <Typography fontWeight={500} mb={2} color="#fff">
         {t('vehicle-details.vehicle-details')}
       </Typography>

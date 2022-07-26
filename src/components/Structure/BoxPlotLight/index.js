@@ -12,13 +12,19 @@ export const Container = styled.div`
   .apexcharts-boxPlot-series {
     path {
       stroke-width: 4;
+      stroke-linejoin: round;
+      stroke: #E2FEFF;
+      fill: #E2FEFF;
     }
+    
+    
     
     ${({ type }) =>
       type === 'VIBRATION' &&
       `
        path:nth-child(odd) {
       stroke-width: 0;
+      display: none;
      } 
     `}
   },
@@ -34,7 +40,21 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
     ],
     options: {
       dataLabels: {
-        enabled: false,
+        enabled: true,
+        formatter: function (val, opt) {
+          return boxes[opt.dataPointIndex].average;
+        },
+        style: {
+          colors: ['#1D3557'],
+          fontSize: '10px',
+          fontWeight: 'bold',
+        },
+        offsetY: 0,
+        background: {
+          enabled: true,
+          foreColor: '#333333',
+          borderColor: 'transparent',
+        },
       },
       tooltip: {
         enabled: false,
@@ -73,13 +93,25 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
         if (type === 'VIBRATION') {
           return {
             x: box.boxId,
-            y: [box.min, box.average, box.average, box.average, box.max],
+            y: [
+              box.min,
+              box.average - 0.7,
+              box.average,
+              box.average + 0.7,
+              box.max,
+            ],
           };
         }
 
         return {
           x: box.boxId,
-          y: [box.min, box.average, box.average, box.average, box.max],
+          y: [
+            box.min,
+            box.average - 0.7,
+            box.average,
+            box.average + 0.7,
+            box.max,
+          ],
         };
       });
 
