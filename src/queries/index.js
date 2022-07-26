@@ -104,3 +104,9 @@ export const getLiveTours = async () => {
 
   return res.json();
 };
+
+export const getAlert = async () => {
+  const res = await fetch(`${REST_ENDPOINT}/alert`);
+
+  return res.json();
+};

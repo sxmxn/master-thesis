@@ -206,6 +206,31 @@
       "enabled": true,
       "randomResponse": false,
       "sequentialResponse": false
+    },
+    {
+      "uuid": "629f8f42-de6d-47cc-b41a-12d827a3b739",
+      "documentation": "Get all customers",
+      "method": "get",
+      "endpoint": "alert",
+      "responses": [
+        {
+          "uuid": "8fbc0d4d-93b2-4ff0-a4ba-08d34fa29b3c",
+          "body": "{\n  \"alert\": {{boolean}},\n  \"message\": \"The temperature of box 24 of tour 182 exceeded 25 degrees\"\n}",
+          "latency": 3000,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false
+        }
+      ],
+      "enabled": true,
+      "randomResponse": false,
+      "sequentialResponse": false
     }
   ],
   "proxyMode": false,

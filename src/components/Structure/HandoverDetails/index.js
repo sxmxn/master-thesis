@@ -2,7 +2,6 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Typography } from '@mui/material';
 import Card from 'components/Structure/Card';
-import { Truck } from '@styled-icons/boxicons-solid/Truck';
 import { PersonFill } from '@styled-icons/bootstrap/PersonFill';
 import { TimeFive } from '@styled-icons/boxicons-solid/TimeFive';
 import { useTranslation } from 'react-i18next';

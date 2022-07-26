@@ -13,43 +13,48 @@ import BoxTemperatureScreen from 'components/Screens/BoxTemperatureScreen';
 import BoxVibrationScreen from 'components/Screens/BoxVibrationScreen';
 import ParameterDetailsScreen from 'components/Screens/ParameterDetailsScreen';
 import { QueryParamProvider } from 'use-query-params';
-import { CustomerDataProvider } from 'components/Contexts';
+import { CustomerDataProvider, AlertProvider } from 'components/Contexts';
 
 function App() {
   return (
     <BrowserRouter>
       <QueryParamProvider ReactRouterRoute={RouteAdapter}>
         <CustomerDataProvider>
-          <Routes>
-            <Route path="/login" element={<div>login</div>} />
-            <Route path="/" element={<PrivateRoutes />}>
-              <Route path="home" element={<div>home</div>} />
-              <Route path="dashboard">
-                <Route path="" element={<HomeScreen />} />
-                <Route path=":tourId">
-                  <Route path="" element={<TourScreen />} />
-                  <Route path="temperature">
-                    <Route
-                      path=""
-                      element={<ParameterDetailsScreen type="TEMPERATURE" />}
-                    />
-                    <Route
-                      path="box/:boxId"
-                      element={<BoxTemperatureScreen />}
-                    />
-                  </Route>
-                  <Route path="vibration">
-                    <Route
-                      path=""
-                      element={<ParameterDetailsScreen type="VIBRATION" />}
-                    />
-                    <Route path="box/:boxId" element={<BoxVibrationScreen />} />
+          <AlertProvider>
+            <Routes>
+              <Route path="/login" element={<div>login</div>} />
+              <Route path="/" element={<PrivateRoutes />}>
+                <Route path="home" element={<div>home</div>} />
+                <Route path="dashboard">
+                  <Route path="" element={<HomeScreen />} />
+                  <Route path=":tourId">
+                    <Route path="" element={<TourScreen />} />
+                    <Route path="temperature">
+                      <Route
+                        path=""
+                        element={<ParameterDetailsScreen type="TEMPERATURE" />}
+                      />
+                      <Route
+                        path="box/:boxId"
+                        element={<BoxTemperatureScreen />}
+                      />
+                    </Route>
+                    <Route path="vibration">
+                      <Route
+                        path=""
+                        element={<ParameterDetailsScreen type="VIBRATION" />}
+                      />
+                      <Route
+                        path="box/:boxId"
+                        element={<BoxVibrationScreen />}
+                      />
+                    </Route>
                   </Route>
                 </Route>
+                <Route path="settings" element={<div>settings</div>} />
               </Route>
-              <Route path="settings" element={<div>settings</div>} />
-            </Route>
-          </Routes>
+            </Routes>
+          </AlertProvider>
         </CustomerDataProvider>
       </QueryParamProvider>
     </BrowserRouter>

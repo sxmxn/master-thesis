@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { ChevronLeft } from '@styled-icons/bootstrap/ChevronLeft';
 import PropTypes from 'prop-types';
