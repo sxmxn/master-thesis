@@ -63,6 +63,7 @@ export const getTourOfCustomer = async ({ queryKey }) => {
     handoverDetails: tour.handover_details,
     order: tour.order,
     customerName: tour.cutsomer_name,
+    boxes: tour.boxes,
   };
 };
 

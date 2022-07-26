@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 import { useTheme } from 'styled-components';
 
-const IllustrationCard = ({
+const Card = ({
   children,
   justifyContent = 'center',
   alignItem = 'center',
@@ -31,13 +31,13 @@ const IllustrationCard = ({
   );
 };
 
-IllustrationCard.propTypes = {
+Card.propTypes = {
   children: PropTypes.node,
   justifyContent: PropTypes.string,
   alignItems: PropTypes.string,
   display: PropTypes.string,
-  width: PropTypes.number,
+  width: PropTypes.any,
   onClick: PropTypes.func,
 };
 
-export default IllustrationCard;
+export default Card;

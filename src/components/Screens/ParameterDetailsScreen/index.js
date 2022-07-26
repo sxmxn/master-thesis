@@ -1,7 +1,12 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';
-import { getParameterOfTour, getTour, getParameterOfBoxes } from 'queries';
+import {
+  getParameterOfTour,
+  getTour,
+  getParameterOfBoxes,
+  getTourOfCustomer,
+} from 'queries';
 import { useNavigate, useParams } from 'react-router-dom';
 import Loader from 'components/Loader';
 import Card from 'components/Structure/Card';
@@ -11,9 +16,11 @@ import MultiLineChart from 'components/Structure/MultiLineChart';
 import Feedback from 'components/Structure/Feedback';
 import Selector from 'components/Form/Selector';
 import PageHeader from '../../Form/PageHeader';
+import { useGlobalData } from '../../../hooks';
 
 const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
   const { tourId } = useParams();
+  const { customer } = useGlobalData();
   const navigate = useNavigate();
   const navigateToBox = boxId => {
     navigate(`../box/${boxId}`);
@@ -26,6 +33,15 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
     ['tour', { tourId }],
     getTour
   );
+  const { isLoading: tourCustomerLoading, data: customerSpecificData } =
+    useQuery(
+      ['tourOfCustomer', { tourId, customerId: customer }],
+      getTourOfCustomer,
+      {
+        // The query will not execute until customer exists
+        enabled: !!customer,
+      }
+    );
   const { isLoading: boxesLoading, data: boxesData } = useQuery(
     ['boxes', { boxes }],
     getParameterOfBoxes,
@@ -35,16 +51,60 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
     }
   );
 
-  const selectorItems = useMemo(() => {
-    if (boxes) {
-      return boxes.map(box => ({
-        value: box,
-        label: box,
-      }));
-    }
-  }, [boxes]);
+  const filteredBoxesTemperature = useMemo(() => {
+    if (!tourParameter) return [];
 
-  if (tourParameterLoading || tourLoading || boxesLoading) return <Loader />;
+    if (!customer || !customerSpecificData)
+      return tourParameter?.boxesTemperature;
+
+    return tourParameter.boxesTemperature?.filter(box =>
+      customerSpecificData.boxes.includes(box.boxId)
+    );
+  }, [customer, tourParameter, customerSpecificData]);
+
+  const filteredBoxesData = useMemo(() => {
+    if (!boxesData) return;
+
+    if (!customer || !customerSpecificData) return boxesData;
+
+    return boxesData?.filter(box =>
+      customerSpecificData.boxes.includes(box.id)
+    );
+  }, [customer, boxesData, customerSpecificData]);
+
+  const filteredBoxesVibration = useMemo(() => {
+    if (!tourParameter) return;
+
+    if (!customer || !customerSpecificData)
+      return tourParameter?.boxesVibration;
+
+    return tourParameter.boxesVibration.filter(box =>
+      customerSpecificData.boxes.includes(box.boxId)
+    );
+  }, [tourParameter, customer, customerSpecificData]);
+
+  const selectorItems = useMemo(() => {
+    if (boxes && !!boxes?.length) {
+      return boxes
+        .filter(box =>
+          !!customerSpecificData
+            ? customerSpecificData.boxes.includes(box)
+            : box
+        )
+        .map(box => ({
+          value: box,
+          label: box,
+        }));
+    }
+  }, [boxes, customerSpecificData]);
+
+  if (
+    tourParameterLoading ||
+    tourLoading ||
+    boxesLoading ||
+    tourCustomerLoading
+  )
+    return <Loader />;
 
   return (
     <Box>
@@ -64,14 +124,14 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
         <Card width={380} minWidth={380}>
           {type === 'TEMPERATURE' ? (
             <BoxPlotLight
-              boxes={tourParameter.boxesTemperature}
+              boxes={filteredBoxesTemperature}
               title="Average Temperature"
               chartId={`pox-plot-temperature-tour-${tourId}`}
               type="TEMPERATURE"
             />
           ) : (
             <BoxPlotLight
-              boxes={tourParameter.boxesVibration}
+              boxes={filteredBoxesVibration}
               title="Average Vibration"
               chartId={`pox-plot-vibration-tour-${tourId}`}
               type="VIBRATION"
@@ -84,7 +144,7 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
               <MultiLineChart
                 title="Temperature"
                 chartId={`multi-line-chart-tour-${tourId}`}
-                boxes={boxesData}
+                boxes={filteredBoxesData}
               />
             </Card>
           </Box>

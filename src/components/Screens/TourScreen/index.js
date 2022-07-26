@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { getTour, getTourOfCustomer, getParameterOfTour } from 'queries';
@@ -44,6 +44,28 @@ const TourScreen = () => {
       }
     );
 
+  const filteredBoxesTemperature = useMemo(() => {
+    if (!tourParameter) return [];
+
+    if (!customer || !customerSpecificData)
+      return tourParameter?.boxesTemperature;
+
+    return tourParameter.boxesTemperature.filter(box =>
+      customerSpecificData.boxes.includes(box.boxId)
+    );
+  }, [customer, tourParameter, customerSpecificData]);
+
+  const filteredBoxesVibration = useMemo(() => {
+    if (!tourParameter) return;
+
+    if (!customer || !customerSpecificData)
+      return tourParameter?.boxesVibration;
+
+    return tourParameter.boxesVibration.filter(box =>
+      customerSpecificData.boxes.includes(box.boxId)
+    );
+  }, [tourParameter, customer, customerSpecificData]);
+
   if (tourParameterLoading || tourCustomerLoading || isLoading)
     return <Loader />;
 
@@ -62,7 +84,7 @@ const TourScreen = () => {
       <Box display="flex">
         <Card width={380} minWidth={380} height={340} flexDirection="column">
           <BoxPlotLight
-            boxes={tourParameter.boxesTemperature}
+            boxes={filteredBoxesTemperature}
             title={t('box-plot.average-temperature')}
             chartId={`pox-plot-temperature-tour-${tourId}`}
             type="TEMPERATURE"
@@ -77,7 +99,7 @@ const TourScreen = () => {
         <Box ml={2}>
           <Card width={380} height={340} flexDirection="column">
             <BoxPlotLight
-              boxes={tourParameter.boxesVibration}
+              boxes={filteredBoxesVibration}
               title={t('box-plot.average-vibration')}
               chartId={`pox-plot-vibration-tour-${tourId}`}
               type="VIBRATION"
