@@ -7,9 +7,12 @@ import apexchart from 'apexcharts';
 export const Container = styled.div`
   text {
     fill: #fff !important;
-  },
+  };
   
   .apexcharts-boxPlot-series {
+    text {
+      fill: #333333 !important;
+    };
     path {
       stroke-width: 4;
       stroke-linejoin: round;
@@ -45,8 +48,8 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
           return boxes[opt.dataPointIndex].average;
         },
         style: {
-          colors: ['#1D3557'],
-          fontSize: '10px',
+          colors: ['transparent'],
+          fontSize: '12px',
           fontWeight: 'bold',
         },
         offsetY: 0,
@@ -127,6 +130,10 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
       //build options to set annotations dynamically
       const options = {
         ...boxPlotLightState.options,
+        dataLabels: {
+          ...boxPlotLightState.options.dataLabels,
+          offsetY: boxes.length <= 1 ? 0 : -1,
+        },
         ...(showAnnotations &&
           type === 'TEMPERATURE' && {
             annotations: {
