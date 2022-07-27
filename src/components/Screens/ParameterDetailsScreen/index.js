@@ -155,6 +155,7 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
             <Feedback
               rating={tourParameter.feedbackVibration.rating}
               text={tourParameter.feedbackVibration.text}
+              textDe={tourParameter.feedbackVibration.text_de}
             />
           </Box>
         )}
@@ -164,6 +165,7 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
           <Feedback
             rating={tourParameter.feedbackTemperature.rating}
             text={tourParameter.feedbackTemperature.text}
+            textDe={tourParameter.feedbackTemperature.text_de}
           />
         </Box>
       )}

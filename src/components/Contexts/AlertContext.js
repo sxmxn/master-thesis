@@ -6,6 +6,7 @@ import { useQuery } from 'react-query';
 import { getAlert } from 'queries';
 import styled from 'styled-components';
 import Slide from '@mui/material/Slide';
+import { useTranslation } from 'react-i18next';
 
 const StyledAlert = styled(Alert)`
   background-color: ${({ theme }) => theme.palette.warning.main} !important;
@@ -22,12 +23,23 @@ const StyledAlert = styled(Alert)`
 const AlertContext = createContext(null);
 
 const AlertProvider = ({ children }) => {
+  const { i18n } = useTranslation();
   const [sawAlert, setSawAlert] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const { data } = useQuery('alert', getAlert, {
     // refetch every 6 seconds
     refetchInterval: 6000,
   });
+
+  const getMessageCurrentLang = alertObject => {
+    if (!alertObject?.message_de) return alertObject?.message;
+
+    if (i18n.language === 'en') {
+      return alertObject?.message;
+    } else {
+      return alertObject?.message_de;
+    }
+  };
 
   useEffect(() => {
     if (!!data) {
@@ -53,7 +65,7 @@ const AlertProvider = ({ children }) => {
         TransitionComponent={Slide}
       >
         <StyledAlert onClose={handleClose} severity="error">
-          {data?.message}
+          {getMessageCurrentLang(data)}
         </StyledAlert>
       </Snackbar>
       {children}

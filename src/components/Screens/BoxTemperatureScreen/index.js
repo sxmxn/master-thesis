@@ -55,6 +55,7 @@ const BoxTemperatureScreen = () => {
         <Feedback
           rating={data.temperature.feedback.rating}
           text={data.temperature.feedback.text}
+          textDe={data.temperature.feedback.text_de}
         />
       </Box>
     </Box>

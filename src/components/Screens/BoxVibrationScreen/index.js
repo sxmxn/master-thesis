@@ -65,6 +65,7 @@ const BoxVibrationScreen = () => {
         <Feedback
           rating={data.vibration.feedback.rating}
           text={data.vibration.feedback.text}
+          textDe={data.vibration.feedback.text_de}
         />
       </Box>
     </Box>

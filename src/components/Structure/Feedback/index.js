@@ -5,6 +5,7 @@ import { ExclamationTriangle } from '@styled-icons/bootstrap/ExclamationTriangle
 import styled from 'styled-components';
 import { Typography, Box } from '@mui/material';
 import Card from 'components/Structure/Card';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled.div`
   display: flex;
@@ -14,7 +15,19 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const Feedback = ({ rating, text }) => {
+const Feedback = ({ rating, text, textDe }) => {
+  const { i18n } = useTranslation();
+
+  const getTextCurrentLang = () => {
+    if (!textDe) return text;
+
+    if (i18n.language === 'en') {
+      return text;
+    } else {
+      return textDe;
+    }
+  };
+
   return (
     <Card
       flexDirection="column"
@@ -28,7 +41,7 @@ const Feedback = ({ rating, text }) => {
       </Typography>
       <Container>
         <Box>{getIcon(rating)}</Box>
-        <Typography ml={2}>{text}</Typography>
+        <Typography ml={2}>{getTextCurrentLang()}</Typography>
       </Container>
     </Card>
   );
@@ -37,6 +50,7 @@ const Feedback = ({ rating, text }) => {
 Feedback.propTypes = {
   rating: PropTypes.oneOf(['GOOD', 'BAD']).isRequired,
   text: PropTypes.string.isRequired,
+  textDe: PropTypes.string,
 };
 
 export default Feedback;
