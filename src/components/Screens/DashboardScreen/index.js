@@ -41,12 +41,14 @@ const Dashboard = () => {
 
   const selectedCustomer = useMemo(() => {
     if (!customer) return;
-    return data.find(user => user.id === customer);
+    return data?.find(user => user.id === customer);
   }, [customer, data]);
 
   const filteredLiveTours = useMemo(() => {
     if (!selectedCustomer) return liveTours;
-    return liveTours.filter(tour => selectedCustomer.tours.includes(tour.id));
+    return liveTours?.filter(tour =>
+      selectedCustomer?.tours?.includes(tour?.id)
+    );
   }, [liveTours, selectedCustomer]);
 
   const geoJsonLiveTours = useMemo(() => {
