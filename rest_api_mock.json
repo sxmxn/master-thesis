@@ -215,7 +215,7 @@
       "responses": [
         {
           "uuid": "8fbc0d4d-93b2-4ff0-a4ba-08d34fa29b3c",
-          "body": "{\n  \"alert\": {{boolean}},\n  \"message\": \"The temperature of box 24 of tour 182 exceeded 25 degrees!\",\n  \"message_de\": \"Die Temperatur in Box 24 der Tour 182 überstieg 25 Grad!\"\n}",
+          "body": "{\n  \"id\": \"{{guid}}\",\n  \"alert\": {{boolean}},\n  \"message\": \"The temperature of box {{int}} of tour {{int}} exceeded 25 degrees!\",\n  \"message_de\": \"Die Temperatur in Box {{int}} der Tour {{int}} überstieg 25 Grad!\",\n  \"time\": \"{{now 'yyyy-MM-dd HH:mm:ss'}}\"\n}",
           "latency": 3000,
           "statusCode": 200,
           "label": "",

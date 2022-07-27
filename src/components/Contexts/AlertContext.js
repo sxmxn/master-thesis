@@ -25,6 +25,7 @@ const AlertContext = createContext(null);
 const AlertProvider = ({ children }) => {
   const { i18n } = useTranslation();
   const [sawAlert, setSawAlert] = useState(false);
+  const [alerts, setAlerts] = useState([]);
   const [openAlert, setOpenAlert] = useState(false);
   const { data } = useQuery('alert', getAlert, {
     // refetch every 6 seconds
@@ -48,6 +49,13 @@ const AlertProvider = ({ children }) => {
     }
   }, [data]);
 
+  useEffect(() => {
+    if (!!data && data?.alert) {
+      setAlerts([data, ...alerts]);
+    }
+    // eslint-disable-next-line
+  }, [data]);
+
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -57,7 +65,7 @@ const AlertProvider = ({ children }) => {
   };
 
   return (
-    <AlertContext.Provider value={{}}>
+    <AlertContext.Provider value={{ alerts }}>
       <Snackbar
         open={openAlert && !sawAlert}
         onClose={handleClose}

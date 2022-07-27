@@ -1,4 +1,5 @@
 import { Compass, ClockHistory, Gear } from '@styled-icons/bootstrap';
+import { AlarmExclamation } from '@styled-icons/boxicons-regular/AlarmExclamation';
 
 const MENU = [
   {
@@ -10,6 +11,11 @@ const MENU = [
     text: 'Dashboard',
     icon: ClockHistory,
     url: '/dashboard',
+  },
+  {
+    text: 'Alerts',
+    icon: AlarmExclamation,
+    url: '/alerts',
   },
   {
     text: 'Settings',

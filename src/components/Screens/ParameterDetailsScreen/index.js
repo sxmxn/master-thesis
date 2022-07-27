@@ -16,13 +16,13 @@ import MultiLineChart from 'components/Structure/MultiLineChart';
 import Feedback from 'components/Structure/Feedback';
 import Selector from 'components/Form/Selector';
 import PageHeader from '../../Form/PageHeader';
-import { useGlobalData } from '../../../hooks';
+import { useCustomerData } from '../../../hooks';
 import { useTranslation } from 'react-i18next';
 
 const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
   const { t } = useTranslation();
   const { tourId } = useParams();
-  const { customer } = useGlobalData();
+  const { customer } = useCustomerData();
   const navigate = useNavigate();
   const navigateToBox = boxId => {
     navigate(`../box/${boxId}`);

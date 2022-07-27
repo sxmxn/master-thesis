@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { getTour, getTourOfCustomer, getParameterOfTour } from 'queries';
 import Loader from 'components/Loader';
-import { useGlobalData } from 'hooks';
+import { useCustomerData } from 'hooks';
 import Card from 'components/Structure/Card';
 import BoxPlotLight from 'components/Structure/BoxPlotLight';
 import { Box, Typography, Button } from '@mui/material';
@@ -26,7 +26,7 @@ const TourScreen = () => {
   const { t } = useTranslation();
   const { palette } = useTheme();
   const { tourId } = useParams();
-  const { customer } = useGlobalData();
+  const { customer } = useCustomerData();
   const navigate = useNavigate();
   const { isLoading, data } = useQuery(['tour', { tourId }], getTour);
   const { isLoading: tourParameterLoading, data: tourParameter } = useQuery(

@@ -1,4 +1,4 @@
 import useMenuItems from './useMenuItems';
-import useGlobalData from './useGlobalData';
+import useCustomerData from './useCustomerData';
 
-export { useMenuItems, useGlobalData };
+export { useMenuItems, useCustomerData };

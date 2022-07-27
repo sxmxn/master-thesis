@@ -4,7 +4,7 @@ import { getAllCustomers, getAllTours, getLiveTours } from 'queries';
 import Loader from 'components/Loader';
 import Selector from 'components/Form/Selector';
 import TourTable from 'components/TourTable';
-import { useGlobalData } from 'hooks';
+import { useCustomerData } from 'hooks';
 import { useTranslation } from 'react-i18next';
 import { Box, Typography } from '@mui/material';
 import Map from 'components/Map';
@@ -28,7 +28,7 @@ const Dashboard = () => {
   );
 
   // selected customer is stored in global store because we need it in various places
-  const { customer, setCustomer } = useGlobalData();
+  const { customer, setCustomer } = useCustomerData();
 
   const selectorItems = useMemo(() => {
     if (data) {

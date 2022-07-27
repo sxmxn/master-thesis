@@ -7,6 +7,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Badge,
 } from '@mui/material';
 import styled, { useTheme } from 'styled-components';
 import { useMenuItems } from 'hooks';
@@ -14,6 +15,7 @@ import { useNavigate, useLocation, matchPath } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Globe } from '@styled-icons/bootstrap/Globe';
 import Logo from 'assets/bxs_truck.svg';
+import useAlert from '../../hooks/useAlert';
 
 const DRAWER_WIDTH = 300;
 
@@ -36,6 +38,7 @@ const Drawer = () => {
   const { menuItems } = useMenuItems();
   const navigate = useNavigate();
   const location = useLocation();
+  const { alerts } = useAlert();
   const pathname = location.pathname;
 
   const checkIfActive = url => {
@@ -88,7 +91,13 @@ const Drawer = () => {
             >
               <ListItemButton>
                 <ListItemIcon>
-                  <Icon size={20} color={palette.text.main} />
+                  {text === 'Alerts' ? (
+                    <Badge badgeContent={alerts.length} color="warning">
+                      <Icon size={20} color={palette.text.main} />
+                    </Badge>
+                  ) : (
+                    <Icon size={20} color={palette.text.main} />
+                  )}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>

@@ -13,6 +13,7 @@ import BoxTemperatureScreen from 'components/Screens/BoxTemperatureScreen';
 import BoxVibrationScreen from 'components/Screens/BoxVibrationScreen';
 import ParameterDetailsScreen from 'components/Screens/ParameterDetailsScreen';
 import DefaultScreen from 'components/Screens/DefaultScreen';
+import AlertScreen from 'components/Screens/AlertScreen';
 import { QueryParamProvider } from 'use-query-params';
 import { CustomerDataProvider, AlertProvider } from 'components/Contexts';
 
@@ -55,6 +56,7 @@ function App() {
                     </Route>
                   </Route>
                 </Route>
+                <Route path="alerts" element={<AlertScreen />} />
                 <Route
                   path="settings"
                   element={<DefaultScreen title="Settings" />}

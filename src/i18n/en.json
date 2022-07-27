@@ -60,5 +60,6 @@
     "portions": "Portions",
     "boxes": "Boxes"
   },
-  "deselect": "Deselect"
+  "deselect": "Deselect",
+  "no-alerts": "No new alerts!"
 }
