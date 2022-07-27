@@ -7,6 +7,7 @@ import Paper from '@mui/material/Paper';
 import PropTypes from 'prop-types';
 import { Box, Typography } from '@mui/material';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled(Paper)`
   background-color: ${({ theme }) => theme.palette.primary.main} !important;
@@ -15,11 +16,12 @@ const Container = styled(Paper)`
 `;
 
 export default function StopTable({ stops }) {
+  const { t } = useTranslation();
   return (
     <Box mt={2}>
       <Container>
         <Typography fontWeight={500} mb={2} color="#fff">
-          Stops
+          {t('stop-table.stops')}
         </Typography>
         <TableContainer>
           <Table sx={{ minWidth: 650 }} aria-label="stop table">

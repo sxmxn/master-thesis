@@ -29,8 +29,8 @@
     "box-capacity": "Box capacity"
   },
   "stop-table": {
-    "stops": "stops",
-    "company": "company",
+    "stops": "Stops",
+    "company": "Company",
     "handover-person": "Handover Person",
     "planned-arrival": "Planned Arrival Time",
     "expected-arrival": "Expected Arrival Time",

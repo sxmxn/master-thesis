@@ -11,8 +11,10 @@ import BarChart from 'components/Structure/BarChart';
 import Histogram from 'components/Structure/Histogram';
 import PageHeader from 'components/Form/PageHeader';
 import { useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 const BoxVibrationScreen = () => {
+  const { t } = useTranslation();
   const { tourId, boxId } = useParams();
   const { isLoading, data } = useQuery(['box', { boxId }], getParameterOfBox);
   const navigate = useNavigate();
@@ -35,7 +37,7 @@ const BoxVibrationScreen = () => {
         <Card width={380} minWidth={380}>
           <BoxPlotLight
             boxes={boxPlotData}
-            title="Average Vibration"
+            title={t('box-plot.average-vibration')}
             chartId={`pox-plot-vibration-tour-${tourId}`}
             type="VIBRATION"
           />
@@ -44,7 +46,7 @@ const BoxVibrationScreen = () => {
           <Card width={500}>
             <BarChart
               chartId={`bar-chart-vibration-tour-${tourId}-box-${boxId}`}
-              title="Vibration (Displacement index over time)"
+              title={t('bar-chart.vibration')}
               box={data}
             />
           </Card>
@@ -55,7 +57,7 @@ const BoxVibrationScreen = () => {
           <Card width={500}>
             <Histogram
               chartId={`histogram-vibration-tour-${tourId}-box-${boxId}`}
-              title="Vibration (Relative Frequency of Displacement Index)"
+              title={t('histogram.vibration')}
               box={data}
             />
           </Card>

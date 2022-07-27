@@ -10,9 +10,11 @@ import Feedback from 'components/Structure/Feedback';
 import AreaChart from 'components/Structure/AreaChart';
 import { useNavigate } from 'react-router';
 import PageHeader from 'components/Form/PageHeader';
+import { useTranslation } from 'react-i18next';
 
 const BoxTemperatureScreen = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { tourId, boxId } = useParams();
   const { isLoading, data } = useQuery(['box', { boxId }], getParameterOfBox);
 
@@ -34,7 +36,7 @@ const BoxTemperatureScreen = () => {
         <Card width={380} minWidth={380}>
           <BoxPlotLight
             boxes={boxPlotData}
-            title="Average Temperature"
+            title={t('box-plot.average-temperature')}
             chartId={`pox-plot-temperature-tour-${tourId}`}
             type="TEMPERATURE"
           />
@@ -42,7 +44,7 @@ const BoxTemperatureScreen = () => {
         <Box ml={2}>
           <Card width={590}>
             <AreaChart
-              title={`Temperature of ${boxId}`}
+              title={`${t('temperatur-line-graph.temperature-of')} ${boxId}`}
               chartId={`area-chart-tour-${tourId}-box-${boxId}`}
               box={data}
             />

@@ -17,8 +17,10 @@ import Feedback from 'components/Structure/Feedback';
 import Selector from 'components/Form/Selector';
 import PageHeader from '../../Form/PageHeader';
 import { useGlobalData } from '../../../hooks';
+import { useTranslation } from 'react-i18next';
 
 const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
+  const { t } = useTranslation();
   const { tourId } = useParams();
   const { customer } = useGlobalData();
   const navigate = useNavigate();
@@ -115,8 +117,8 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
             items={selectorItems}
             onSelect={navigateToBox}
             selected={''}
-            placeholder="Box"
-            description="Select a Box"
+            placeholder={t('box')}
+            description={t('select-box')}
           />
         </Box>
       </Box>
@@ -125,14 +127,14 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
           {type === 'TEMPERATURE' ? (
             <BoxPlotLight
               boxes={filteredBoxesTemperature}
-              title="Average Temperature"
+              title={t('box-plot.average-temperature')}
               chartId={`pox-plot-temperature-tour-${tourId}`}
               type="TEMPERATURE"
             />
           ) : (
             <BoxPlotLight
               boxes={filteredBoxesVibration}
-              title="Average Vibration"
+              title={t('box-plot.average-vibration')}
               chartId={`pox-plot-vibration-tour-${tourId}`}
               type="VIBRATION"
             />
@@ -142,7 +144,7 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
           <Box ml={2}>
             <Card width={500}>
               <MultiLineChart
-                title="Temperature"
+                title={t('multi-line-graph.temperature')}
                 chartId={`multi-line-chart-tour-${tourId}`}
                 boxes={filteredBoxesData}
               />

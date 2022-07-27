@@ -3,6 +3,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHeadMui from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 export const StyledTableHead = styled(TableHeadMui)(({ theme }) => ({
   '& th': {
@@ -13,14 +14,15 @@ export const StyledTableHead = styled(TableHeadMui)(({ theme }) => ({
 }));
 
 export default function TableHead() {
+  const { t } = useTranslation();
   return (
     <StyledTableHead>
       <TableRow>
-        <TableCell>Company</TableCell>
-        <TableCell>Handover Person</TableCell>
-        <TableCell>Planned Arrival Time</TableCell>
-        <TableCell>Expected Arrival</TableCell>
-        <TableCell>Status</TableCell>
+        <TableCell>{t('stop-table.company')}</TableCell>
+        <TableCell>{t('stop-table.handover-person')}</TableCell>
+        <TableCell>{t('stop-table.planned-arrival')}</TableCell>
+        <TableCell>{t('stop-table.expected-arrival')}</TableCell>
+        <TableCell>{t('stop-table.status')}</TableCell>
         <TableCell />
       </TableRow>
     </StyledTableHead>

@@ -91,6 +91,10 @@ const AreaChart = ({ title, chartId, box }) => {
       //build options to set label dynamically
       const options = {
         ...chartState.options,
+        title: {
+          ...chartState.options.title,
+          text: title,
+        },
         labels: box.temperature?.details.map(dataPoint => dataPoint.time),
       };
 

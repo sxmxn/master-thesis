@@ -81,6 +81,10 @@ const MultiLineChart = ({ title, chartId, boxes = [] }) => {
       //build options to set label dynamically
       const options = {
         ...chartState.options,
+        title: {
+          ...chartState.options.title,
+          text: title,
+        },
         labels: boxes[boxes.length - 1].temperature?.details.map(
           dataPoint => dataPoint.time
         ),

@@ -71,11 +71,20 @@ const BarChart = ({ title, chartId, box }) => {
         },
       ];
 
+      const options = {
+        ...chartState.options,
+        title: {
+          ...chartState.options.title,
+          text: title,
+        },
+      };
+
       // rebuild chart with new serie data and options
-      apexchart.exec(chartId, 'updateOptions', { series });
+      apexchart.exec(chartId, 'updateOptions', { ...options, series });
 
       setChartState({
         series: series,
+        options: options,
         ...chartState,
       });
     }

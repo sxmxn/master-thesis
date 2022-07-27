@@ -131,6 +131,10 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
           ...boxPlotLightState.options.dataLabels,
           offsetY: boxes.length <= 1 ? 0 : -1,
         },
+        title: {
+          ...boxPlotLightState.options.title,
+          text: title,
+        },
         ...(showAnnotations &&
           type === 'TEMPERATURE' && {
             annotations: {

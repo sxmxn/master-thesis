@@ -64,6 +64,10 @@ const BarChart = ({ title, chartId, box }) => {
 
       const options = {
         ...chartState.options,
+        title: {
+          ...chartState.options.title,
+          text: title,
+        },
         xaxis: {
           categories: box.vibration.details_histogram.map(dataPoint =>
             dataPoint.value.toString()
