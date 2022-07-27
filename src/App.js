@@ -7,11 +7,12 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import PrivateRoutes from 'components/Auth/PrivateRoutes';
-import HomeScreen from 'components/Screens/HomeScreen';
+import DashboardScreen from 'components/Screens/DashboardScreen';
 import TourScreen from 'components/Screens/TourScreen';
 import BoxTemperatureScreen from 'components/Screens/BoxTemperatureScreen';
 import BoxVibrationScreen from 'components/Screens/BoxVibrationScreen';
 import ParameterDetailsScreen from 'components/Screens/ParameterDetailsScreen';
+import HomeScreen from 'components/Screens/HomeScreen';
 import { QueryParamProvider } from 'use-query-params';
 import { CustomerDataProvider, AlertProvider } from 'components/Contexts';
 
@@ -24,9 +25,9 @@ function App() {
             <Routes>
               <Route path="/login" element={<div>login</div>} />
               <Route path="/" element={<PrivateRoutes />}>
-                <Route path="home" element={<div>home</div>} />
+                <Route path="home" element={<HomeScreen />} />
                 <Route path="dashboard">
-                  <Route path="" element={<HomeScreen />} />
+                  <Route path="" element={<DashboardScreen />} />
                   <Route path=":tourId">
                     <Route path="" element={<TourScreen />} />
                     <Route path="temperature">

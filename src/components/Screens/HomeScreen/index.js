@@ -1,112 +1,47 @@
-import React, { useMemo } from 'react';
-import { useQuery } from 'react-query';
-import { getAllCustomers, getAllTours, getLiveTours } from 'queries';
-import Loader from 'components/Loader';
-import Selector from 'components/Form/Selector';
-import TourTable from 'components/TourTable';
-import { useGlobalData } from 'hooks';
-import { useTranslation } from 'react-i18next';
-import { Box, Typography } from '@mui/material';
-import Map from 'components/Map';
-import { useTheme } from 'styled-components';
+import React from 'react';
+import HomeIllustration from 'assets/delivery.png';
+import styled from 'styled-components';
+import { Box, Button, Typography } from '@mui/material';
+import { useNavigate } from 'react-router';
 
-const Dashboard = () => {
-  const { palette } = useTheme();
-  const { t } = useTranslation();
-  const { isLoading, data } = useQuery('customers', getAllCustomers);
-  const { isLoading: toursLoading, data: tours } = useQuery(
-    'tours',
-    getAllTours
-  );
-  const { isLoading: liveLoading, data: liveTours } = useQuery(
-    'liveTours',
-    getLiveTours,
-    {
-      // refetch every 6 seconds
-      refetchInterval: 6000,
-    }
-  );
+const Image = styled.img`
+  height: auto;
+  width: 20%;
+`;
 
-  // selected customer is stored in global store because we need it in various places
-  const { customer, setCustomer } = useGlobalData();
+const Title = styled(Typography)`
+  text-align: center;
+  color: ${({ theme }) => theme.palette.primary.main};
+  padding: 16px;
+`;
 
-  const selectorItems = useMemo(() => {
-    if (data) {
-      return data.map(customer => ({
-        value: customer?.id,
-        label: customer?.name,
-      }));
-    }
-  }, [data]);
-
-  const selectedCustomer = useMemo(() => {
-    if (!customer) return;
-    return data.find(user => user.id === customer);
-  }, [customer, data]);
-
-  const filteredLiveTours = useMemo(() => {
-    if (!selectedCustomer) return liveTours;
-    return liveTours.filter(tour => selectedCustomer.tours.includes(tour.id));
-  }, [liveTours, selectedCustomer]);
-
-  const geoJsonLiveTours = useMemo(() => {
-    if (!filteredLiveTours) return null;
-
-    const features = filteredLiveTours.map(tour => ({
-      type: 'Feature',
-      properties: {
-        tour: tour?.name,
-        tourId: tour?.id,
-      },
-      geometry: {
-        type: 'Point',
-        coordinates: [
-          tour?.location?.coordinates.lng,
-          tour?.location?.coordinates.lat,
-        ],
-      },
-    }));
-
-    return {
-      type: 'FeatureCollection',
-      features: features,
-    };
-  }, [filteredLiveTours]);
-
-  const filteredTours = useMemo(() => {
-    if (!selectedCustomer) return tours;
-    return tours.filter(tour => selectedCustomer.tours.includes(tour.id));
-  }, [tours, selectedCustomer]);
-
-  if (isLoading || toursLoading || liveLoading) return <Loader />;
+const Home = () => {
+  const navigate = useNavigate();
 
   return (
-    <div>
-      <Selector
-        items={selectorItems}
-        onSelect={setCustomer}
-        selected={customer}
-        placeholder={t('customer')}
-        description={t('select-customer')}
-      />
-      <TourTable tours={filteredTours} />
-      <Box borderRadius={2} mt={2} boxShadow={2} position="relative">
-        <Box
-          position="absolute"
-          bgcolor={palette.primary.main}
-          px={5}
-          py={1}
-          zIndex={999}
-          borderRadius={1}
+    <Box height="90vh">
+      <Box
+        display="flex"
+        height="100%"
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="column"
+      >
+        <Image src={HomeIllustration} />
+        <Title fontSize={40} fontWeight={700} mb={3} mt={1}>
+          Welcome to the IQ-Trans Dashboard
+        </Title>
+        <Button
+          variant="contained"
+          onClick={e => {
+            navigate(`../dashboard`);
+          }}
         >
-          <Typography fontWeight={500} color="#fff">
-            {t('live-map')}
-          </Typography>
-        </Box>
-        <Map mapData={geoJsonLiveTours} mapHeight={500} liveMap />
+          go to dashboard
+        </Button>
       </Box>
-    </div>
+    </Box>
   );
 };
 
-export default Dashboard;
+export default Home;
