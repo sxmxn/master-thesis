@@ -1,12 +1,12 @@
 import {
-  MapContainer,
-  TileLayer,
-  GeoJSON,
-  Marker,
   FeatureGroup,
+  GeoJSON,
+  MapContainer,
+  Marker,
   Popup,
+  TileLayer,
 } from 'react-leaflet';
-import React from 'react';
+import React, { useMemo, useRef } from 'react';
 import 'leaflet/dist/leaflet.css';
 import PropTypes from 'prop-types';
 import L from 'leaflet';
@@ -31,6 +31,7 @@ const CENTER_DEFAULT = [52.5317, 13.3817];
 
 const Map = ({ mapHeight = 300, mapData, liveMap = false }) => {
   const { t } = useTranslation();
+  const map = useRef();
   const navigate = useNavigate();
 
   delete L.Icon.Default.prototype._getIconUrl;
@@ -45,19 +46,33 @@ const Map = ({ mapHeight = 300, mapData, liveMap = false }) => {
     shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
   });
 
+  const bounds = useMemo(() => {
+    if (liveMap) {
+      return L.latLngBounds(
+        mapData?.features?.map(c => {
+          return [c?.geometry?.coordinates[1], c?.geometry?.coordinates[0]];
+        })
+      );
+    }
+  }, [mapData]);
+
   return (
     <StyledMapContainer
+      bounds={bounds}
       center={
-        mapData
-          ? [
-              mapData.features[0]?.geometry?.coordinates[1],
-              mapData.features[0]?.geometry?.coordinates[0],
-            ]
-          : CENTER_DEFAULT
+        !liveMap
+          ? mapData
+            ? [
+                mapData.features[0]?.geometry?.coordinates[1],
+                mapData.features[0]?.geometry?.coordinates[0],
+              ]
+            : CENTER_DEFAULT
+          : null
       }
       style={{ height: mapHeight, borderRadius: 8 }}
       zoom={7}
       scrollWheelZoom={false}
+      ref={map}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
