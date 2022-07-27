@@ -1,8 +1,7 @@
 import React from 'react';
 import HomeIllustration from 'assets/delivery.png';
 import styled from 'styled-components';
-import { Box, Button, Typography } from '@mui/material';
-import { useNavigate } from 'react-router';
+import { Box, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
 const Image = styled.img`
@@ -17,8 +16,6 @@ const Title = styled(Typography)`
 `;
 
 const DefaultScreen = ({ title }) => {
-  const navigate = useNavigate();
-
   return (
     <Box height="90vh">
       <Box
@@ -32,14 +29,6 @@ const DefaultScreen = ({ title }) => {
         <Title fontSize={40} fontWeight={700} mb={3} mt={1}>
           {title}
         </Title>
-        <Button
-          variant="contained"
-          onClick={() => {
-            navigate(`../dashboard`);
-          }}
-        >
-          go to dashboard
-        </Button>
       </Box>
     </Box>
   );
