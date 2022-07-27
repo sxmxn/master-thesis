@@ -3,6 +3,7 @@ import HomeIllustration from 'assets/delivery.png';
 import styled from 'styled-components';
 import { Box, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
+import PropTypes from 'prop-types';
 
 const Image = styled.img`
   height: auto;
@@ -15,7 +16,7 @@ const Title = styled(Typography)`
   padding: 16px;
 `;
 
-const Home = () => {
+const DefaultScreen = ({ title }) => {
   const navigate = useNavigate();
 
   return (
@@ -29,11 +30,11 @@ const Home = () => {
       >
         <Image src={HomeIllustration} />
         <Title fontSize={40} fontWeight={700} mb={3} mt={1}>
-          Welcome to the IQ-Trans Dashboard
+          {title}
         </Title>
         <Button
           variant="contained"
-          onClick={e => {
+          onClick={() => {
             navigate(`../dashboard`);
           }}
         >
@@ -44,4 +45,8 @@ const Home = () => {
   );
 };
 
-export default Home;
+DefaultScreen.propTypes = {
+  title: PropTypes.string,
+};
+
+export default DefaultScreen;

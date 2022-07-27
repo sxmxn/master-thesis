@@ -54,7 +54,7 @@ const Map = ({ mapHeight = 300, mapData, liveMap = false }) => {
         })
       );
     }
-  }, [mapData]);
+  }, [mapData, liveMap]);
 
   return (
     <StyledMapContainer
@@ -84,7 +84,7 @@ const Map = ({ mapHeight = 300, mapData, liveMap = false }) => {
         !!mapData &&
         mapData.features.map((feature, index) => {
           return (
-            <FeatureGroup color="purple" key={index}>
+            <FeatureGroup key={index}>
               <Popup>
                 <PopUpTitle>{feature.properties.tour}</PopUpTitle>
                 <Button

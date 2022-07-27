@@ -12,7 +12,7 @@ import TourScreen from 'components/Screens/TourScreen';
 import BoxTemperatureScreen from 'components/Screens/BoxTemperatureScreen';
 import BoxVibrationScreen from 'components/Screens/BoxVibrationScreen';
 import ParameterDetailsScreen from 'components/Screens/ParameterDetailsScreen';
-import HomeScreen from 'components/Screens/HomeScreen';
+import DefaultScreen from 'components/Screens/DefaultScreen';
 import { QueryParamProvider } from 'use-query-params';
 import { CustomerDataProvider, AlertProvider } from 'components/Contexts';
 
@@ -25,7 +25,10 @@ function App() {
             <Routes>
               <Route path="/login" element={<div>login</div>} />
               <Route path="/" element={<PrivateRoutes />}>
-                <Route path="home" element={<HomeScreen />} />
+                <Route
+                  path="home"
+                  element={<DefaultScreen title="Home Screen" />}
+                />
                 <Route path="dashboard">
                   <Route path="" element={<DashboardScreen />} />
                   <Route path=":tourId">
@@ -52,7 +55,10 @@ function App() {
                     </Route>
                   </Route>
                 </Route>
-                <Route path="settings" element={<div>settings</div>} />
+                <Route
+                  path="settings"
+                  element={<DefaultScreen title="Settings" />}
+                />
               </Route>
             </Routes>
           </AlertProvider>
