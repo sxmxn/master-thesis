@@ -36,9 +36,8 @@ jobs:
         env:
           REACT_APP_API_ENDPOINT: ${{ secrets.REACT_APP_API_ENDPOINT }}
 
-      - name: Install mockoon-cli
+      - name: Run mocked api server with mockoon-cli
         run: |
-          npm install -D mockoon-cli
           npx mockoon-cli start --data ./rest_api_mock.json
 
       - name: Deploy
