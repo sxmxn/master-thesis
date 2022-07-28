@@ -67,6 +67,7 @@ const theme = {
       main: '#1D3557',
       light: '#457B9D',
       lighter: '#A8DADC',
+      ultraLight: '#F1FAEE',
     },
     text: {
       main: '#FFFFFF',
