@@ -54,7 +54,7 @@ const Dashboard = () => {
   const geoJsonLiveTours = useMemo(() => {
     if (!filteredLiveTours) return null;
 
-    const features = filteredLiveTours.map(tour => ({
+    const features = filteredLiveTours?.map(tour => ({
       type: 'Feature',
       properties: {
         tour: tour?.name,
