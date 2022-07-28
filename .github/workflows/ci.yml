@@ -36,10 +36,6 @@ jobs:
         env:
           REACT_APP_API_ENDPOINT: ${{ secrets.REACT_APP_API_ENDPOINT }}
 
-      - name: Run mocked api server with mockoon-cli
-        run: |
-          npx mockoon-cli start --data ./rest_api_mock.json
-
       - name: deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
