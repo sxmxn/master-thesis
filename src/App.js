@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route,
   useLocation,
@@ -19,7 +19,7 @@ import { CustomerDataProvider, AlertProvider } from 'components/Contexts';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <QueryParamProvider ReactRouterRoute={RouteAdapter}>
         <CustomerDataProvider>
           <AlertProvider>
@@ -66,7 +66,7 @@ function App() {
           </AlertProvider>
         </CustomerDataProvider>
       </QueryParamProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

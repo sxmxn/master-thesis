@@ -1,7 +1,7 @@
 {
   "name": "iq-trans-dashboard",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "https://sxmxn.github.io/master-thesis",
   "proxy": "http://127.0.0.1:3001",
   "private": true,
   "dependencies": {
