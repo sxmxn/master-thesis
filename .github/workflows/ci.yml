@@ -52,4 +52,3 @@ jobs:
           user_email: ${{ secrets.GIT_EMAIL }}
           github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
           repository: ${{ github.repository }}
-          REACT_APP_API_ENDPOINT: ${{  }}
