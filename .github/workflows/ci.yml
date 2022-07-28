@@ -40,14 +40,8 @@ jobs:
         run: |
           npx mockoon-cli start --data ./rest_api_mock.json
 
-      - name: Deploy
-        run: |
-          git config --global user.name $user_name
-          git config --global user.email $user_email
-          git remote set-url origin https://x-access-token:${github_token}@github.com/${repository}
-          npm run deploy
-        env:
-          user_name: ${{ secrets.GIT_USER_NAME }}
-          user_email: ${{ secrets.GIT_EMAIL }}
-          github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-          repository: ${{ github.repository }}
+      - name: deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./build
