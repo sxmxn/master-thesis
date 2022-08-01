@@ -13,12 +13,12 @@ import { useTheme } from 'styled-components';
 const Dashboard = () => {
   const { palette } = useTheme();
   const { t } = useTranslation();
-  const { isLoading, data } = useQuery('customers', getAllCustomers);
-  const { isLoading: toursLoading, data: tours } = useQuery(
+  const { isLoading, data = [] } = useQuery('customers', getAllCustomers);
+  const { isLoading: toursLoading, data: tours = [] } = useQuery(
     'tours',
     getAllTours
   );
-  const { isLoading: liveLoading, data: liveTours } = useQuery(
+  const { isLoading: liveLoading, data: liveTours = [] } = useQuery(
     'liveTours',
     getLiveTours,
     {
@@ -105,7 +105,11 @@ const Dashboard = () => {
             {t('live-map')}
           </Typography>
         </Box>
-        <Map mapData={geoJsonLiveTours} mapHeight={500} liveMap />
+        <Map
+          mapData={!!liveTours.length && geoJsonLiveTours}
+          mapHeight={500}
+          liveMap={!!liveTours.length}
+        />
       </Box>
     </div>
   );
