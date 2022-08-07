@@ -10,7 +10,7 @@ export const Container = styled.div`
   }
 `;
 
-const BarChart = ({ title, chartId, box }) => {
+const BarChart = ({ title, chartId, box, labelYAxis, labelXAxis }) => {
   const [chartState, setChartState] = useState({
     series: [],
     options: {
@@ -45,6 +45,16 @@ const BarChart = ({ title, chartId, box }) => {
         labels: {
           colors: '#fff',
           useSeriesColors: false,
+        },
+      },
+      yaxis: {
+        title: {
+          text: labelYAxis ? labelYAxis : undefined,
+        },
+      },
+      xaxis: {
+        title: {
+          text: labelXAxis ? labelXAxis : undefined,
         },
       },
     },
@@ -102,6 +112,8 @@ BarChart.propTypes = {
   title: PropTypes.string.isRequired,
   box: PropTypes.object,
   chartId: PropTypes.string.isRequired,
+  labelXAxis: PropTypes.string,
+  labelYAxis: PropTypes.string,
 };
 
 export default BarChart;

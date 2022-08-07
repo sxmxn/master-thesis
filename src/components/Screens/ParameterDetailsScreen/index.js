@@ -130,6 +130,7 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
               title={t('box-plot.average-temperature')}
               chartId={`pox-plot-temperature-tour-${tourId}`}
               type="TEMPERATURE"
+              labelYAxis={t('box-plot.label-temperature')}
             />
           ) : (
             <BoxPlotLight
@@ -137,6 +138,7 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
               title={t('box-plot.average-vibration')}
               chartId={`pox-plot-vibration-tour-${tourId}`}
               type="VIBRATION"
+              labelYAxis={t('Displacement Index')}
             />
           )}
         </Card>
@@ -147,6 +149,7 @@ const ParameterDetailsScreen = ({ type = 'TEMPERATURE' }) => {
                 title={t('multi-line-graph.temperature')}
                 chartId={`multi-line-chart-tour-${tourId}`}
                 boxes={filteredBoxesData}
+                labelYAxis={t('multi-line-graph.label-temperature')}
               />
             </Card>
           </Box>

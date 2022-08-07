@@ -39,6 +39,7 @@ const BoxTemperatureScreen = () => {
             title={t('box-plot.average-temperature')}
             chartId={`pox-plot-temperature-tour-${tourId}`}
             type="TEMPERATURE"
+            labelYAxis={t('box-plot.label-temperature')}
           />
         </Card>
         <Box ml={2}>
@@ -47,6 +48,7 @@ const BoxTemperatureScreen = () => {
               title={`${t('temperatur-line-graph.temperature-of')} ${boxId}`}
               chartId={`area-chart-tour-${tourId}-box-${boxId}`}
               box={data}
+              labelYAxis={t('temperatur-line-graph.label-temperature')}
             />
           </Card>
         </Box>

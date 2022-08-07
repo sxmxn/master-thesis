@@ -19,7 +19,8 @@
     "average-temperature": "Average Temperature",
     "average-vibration": "Average Vibration",
     "vibration-details": "Vibration Details",
-    "temperature-details": "Temperature Details"
+    "temperature-details": "Temperature Details",
+    "label-temperature": "Temperature (°C)"
   },
   "vehicle-details": {
     "vehicle-details": "Vehicle Details",
@@ -41,13 +42,16 @@
   "select-box": "Select Box",
   "box": "Box",
   "multi-line-graph": {
-    "temperature": "Temperature"
+    "temperature": "Temperature",
+    "label-temperature": "Temperature (°C)"
   },
   "temperatur-line-graph": {
-    "temperature-of": "Temperature of"
+    "temperature-of": "Temperature of",
+    "label-temperature": "Temperature (°C)"
   },
   "histogram": {
-    "vibration": "Vibration (Relative Frequency of Displacement Index)"
+    "vibration": "Vibration (Relative Frequency of Displacement Index)",
+    "label-frequency": "Frequency (%)"
   },
   "bar-chart": {
     "vibration": "Vibration (Displacement Index over Time)"

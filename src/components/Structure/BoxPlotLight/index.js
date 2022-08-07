@@ -33,7 +33,7 @@ export const Container = styled.div`
   },
 `;
 
-const BoxPlotLight = ({ title, boxes, chartId, type }) => {
+const BoxPlotLight = ({ title, boxes, chartId, type, labelYAxis }) => {
   const [boxPlotLightState, setBoxPlotLightState] = useState({
     series: [
       {
@@ -45,7 +45,7 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
       dataLabels: {
         enabled: true,
         formatter: function (val, opt) {
-          return boxes[opt.dataPointIndex].average;
+          return `${boxes[opt.dataPointIndex].average}°C`;
         },
         style: {
           colors: ['transparent'],
@@ -82,6 +82,11 @@ const BoxPlotLight = ({ title, boxes, chartId, type }) => {
       },
       grid: {
         show: false,
+      },
+      yaxis: {
+        title: {
+          text: labelYAxis ? labelYAxis : undefined,
+        },
       },
     },
   });
@@ -182,6 +187,7 @@ BoxPlotLight.propTypes = {
   boxes: PropTypes.array.isRequired,
   chartId: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['VIBRATION', 'TEMPERATURE']),
+  labelYAxis: PropTypes.string,
 };
 
 export default BoxPlotLight;

@@ -19,7 +19,8 @@
     "average-temperature": "Durchschnittliche Temperatur",
     "average-vibration": "Durchschnittliche Erschütterung",
     "vibration-details": "Vibrationsdetails",
-    "temperature-details": "Temperaturdetails"
+    "temperature-details": "Temperaturdetails",
+    "label-temperature": "Temperatur (°C)"
   },
   "vehicle-details": {
     "vehicle-details": "Fahrzeugs Details",
@@ -41,13 +42,16 @@
   "select-box": "Wähle eine Kiste",
   "box": "Kiste",
   "multi-line-graph": {
-    "temperature": "Temperatur"
+    "temperature": "Temperatur",
+    "label-temperature": "Temperatur (°C)"
   },
   "temperatur-line-graph": {
-    "temperature-of": "Temperatur von"
+    "temperature-of": "Temperatur von",
+    "label-temperature": "Temperatur (°C)"
   },
   "histogram": {
-    "vibration": "Erschütterung (Relative Frequenz des Displacement Index)"
+    "vibration": "Erschütterung (Relative Frequenz des Displacement Index)",
+    "label-frequency": "Häufigkeit (%)"
   },
   "bar-chart": {
     "vibration": "Erschütterung (Displacement Index über die Zeit)"

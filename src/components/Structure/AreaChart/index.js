@@ -10,7 +10,7 @@ export const Container = styled.div`
   }
 `;
 
-const AreaChart = ({ title, chartId, box }) => {
+const AreaChart = ({ title, chartId, box, labelYAxis }) => {
   const [chartState, setChartState] = useState({
     series: [],
     options: {
@@ -74,6 +74,11 @@ const AreaChart = ({ title, chartId, box }) => {
           useSeriesColors: false,
         },
       },
+      yaxis: {
+        title: {
+          text: labelYAxis ? labelYAxis : undefined,
+        },
+      },
     },
   });
 
@@ -126,6 +131,7 @@ AreaChart.propTypes = {
   title: PropTypes.string.isRequired,
   box: PropTypes.object,
   chartId: PropTypes.string.isRequired,
+  labelYAxis: PropTypes.string,
 };
 
 export default AreaChart;

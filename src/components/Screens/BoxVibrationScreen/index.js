@@ -40,6 +40,7 @@ const BoxVibrationScreen = () => {
             title={t('box-plot.average-vibration')}
             chartId={`pox-plot-vibration-tour-${tourId}`}
             type="VIBRATION"
+            labelYAxis="Displacement Index"
           />
         </Card>
         <Box ml={2}>
@@ -48,6 +49,7 @@ const BoxVibrationScreen = () => {
               chartId={`bar-chart-vibration-tour-${tourId}-box-${boxId}`}
               title={t('bar-chart.vibration')}
               box={data}
+              labelYAxis="Displacement Index"
             />
           </Card>
         </Box>
@@ -59,6 +61,8 @@ const BoxVibrationScreen = () => {
               chartId={`histogram-vibration-tour-${tourId}-box-${boxId}`}
               title={t('histogram.vibration')}
               box={data}
+              labelYAxis={t('histogram.label-frequency')}
+              labelXAxis="Displacement Index"
             />
           </Card>
         </Box>

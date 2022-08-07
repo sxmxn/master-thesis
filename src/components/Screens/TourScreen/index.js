@@ -88,6 +88,7 @@ const TourScreen = () => {
             title={t('box-plot.average-temperature')}
             chartId={`pox-plot-temperature-tour-${tourId}`}
             type="TEMPERATURE"
+            labelYAxis={t('box-plot.label-temperature')}
           />
           <StyledButton
             variant="contained"
@@ -103,6 +104,7 @@ const TourScreen = () => {
               title={t('box-plot.average-vibration')}
               chartId={`pox-plot-vibration-tour-${tourId}`}
               type="VIBRATION"
+              labelYAxis="Displacement Index"
             />
             <StyledButton
               variant="contained"

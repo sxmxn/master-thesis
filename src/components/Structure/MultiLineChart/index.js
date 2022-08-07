@@ -10,7 +10,7 @@ export const Container = styled.div`
   }
 `;
 
-const MultiLineChart = ({ title, chartId, boxes = [] }) => {
+const MultiLineChart = ({ title, chartId, boxes = [], labelYAxis }) => {
   const [chartState, setChartState] = useState({
     series: [],
     options: {
@@ -63,6 +63,11 @@ const MultiLineChart = ({ title, chartId, boxes = [] }) => {
         labels: {
           colors: '#fff',
           useSeriesColors: false,
+        },
+      },
+      yaxis: {
+        title: {
+          text: labelYAxis ? labelYAxis : undefined,
         },
       },
     },
@@ -119,6 +124,7 @@ MultiLineChart.propTypes = {
   title: PropTypes.string.isRequired,
   boxes: PropTypes.array.isRequired,
   chartId: PropTypes.string.isRequired,
+  labelYAxis: PropTypes.string,
 };
 
 export default MultiLineChart;
