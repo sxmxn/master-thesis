@@ -85,7 +85,7 @@ const Map = ({ mapHeight = 300, mapData, liveMap = false }) => {
         mapData.features.map((feature, index) => {
           return (
             <FeatureGroup key={index}>
-              <Popup>
+              <Popup closeButton={false}>
                 <PopUpTitle>{feature.properties.tour}</PopUpTitle>
                 <Button
                   variant="contained"

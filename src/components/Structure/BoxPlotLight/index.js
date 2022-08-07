@@ -26,8 +26,8 @@ export const Container = styled.div`
       type === 'VIBRATION' &&
       `
        path:nth-child(odd) {
-      stroke-width: 0;
-      display: none;
+        stroke-width: 0;
+        display: none;
      } 
     `}
   },
@@ -45,7 +45,11 @@ const BoxPlotLight = ({ title, boxes, chartId, type, labelYAxis }) => {
       dataLabels: {
         enabled: true,
         formatter: function (val, opt) {
-          return `${boxes[opt.dataPointIndex].average}°C`;
+          if (type === 'TEMPERATURE') {
+            return `${boxes[opt.dataPointIndex].average}°C`;
+          }
+
+          return boxes[opt.dataPointIndex].average;
         },
         style: {
           colors: ['transparent'],
