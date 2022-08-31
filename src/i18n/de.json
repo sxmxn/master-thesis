@@ -23,7 +23,7 @@
     "label-temperature": "Temperatur (°C)"
   },
   "vehicle-details": {
-    "vehicle-details": "Fahrzeugs Details",
+    "vehicle-details": "Fahrzeugdetails",
     "load-capacity": "Ladekapazität",
     "free": "frei",
     "loaded": "geladen",
@@ -34,7 +34,7 @@
     "company": "Unternehmen",
     "handover-person": "Person bei Übergabe",
     "planned-arrival": "Geplante Ankunftszeit",
-    "expected-arrival": "Erwartet Ankunftszeit",
+    "expected-arrival": "Erwartete Ankunftszeit",
     "status": "Status",
     "COMPLETED": "abgeschlossen",
     "IN_PROGRESS": "wird ausgeführt"
